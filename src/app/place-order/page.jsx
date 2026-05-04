@@ -1,10 +1,10 @@
-import AboutPage from '@/screen/about/AboutPage'
+import PlaceOrder from '@/screen/cart/PlaceOrderPage'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-     <AboutPage/>
+      <PlaceOrder/>
     </div>
   )
 }

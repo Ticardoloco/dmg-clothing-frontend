@@ -1,10 +1,10 @@
-import AboutPage from '@/screen/about/AboutPage'
+import CargoPage from '@/screen/shop/CargoPage'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-     <AboutPage/>
+      <CargoPage/>
     </div>
   )
 }
