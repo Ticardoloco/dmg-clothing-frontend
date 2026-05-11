@@ -31,7 +31,9 @@ const ProfilePage = () => {
         username: user.username || "",
         email: user.email || "",
         phone: user.phone || "",
-        avatar: user.avatar || "https://res.cloudinary.com/dyo0bdgnf/image/upload/v1778246491/avatar_dno6bq.png",
+        avatar:
+          user.avatar ||
+          "https://res.cloudinary.com/dyo0bdgnf/image/upload/v1778246491/avatar_dno6bq.png",
         address: {
           street: user.address?.street || "",
           city: user.address?.city || "",
@@ -43,38 +45,38 @@ const ProfilePage = () => {
   }, [user]);
 
   const handleImageUpload = async (e) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
 
-  reader.onloadend = async () => {
-    const base64Image = reader.result;
-    
-    setLoading(true); // Start loading spinner
-    try {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image: base64Image }),
-      });
+    reader.onloadend = async () => {
+      const base64Image = reader.result;
 
-      const data = await res.json();
+      setLoading(true); // Start loading spinner
+      try {
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ image: base64Image }),
+        });
 
-      if (data.url) {
-        // Update the form with the actual Cloudinary URL
-        setFormData((prev) => ({ ...prev, avatar: data.url }));
-        toast.success("Image uploaded to cloud!");
+        const data = await res.json();
+
+        if (data.url) {
+          // Update the form with the actual Cloudinary URL
+          setFormData((prev) => ({ ...prev, avatar: data.url }));
+          toast.success("Image uploaded to cloud!");
+        }
+      } catch (err) {
+        toast.error("Image upload failed");
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      toast.error("Image upload failed");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+    };
   };
-};
 
   // 3. Handlers for Input Changes
   const handleChange = (e) => {
@@ -98,20 +100,35 @@ const ProfilePage = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-           Authorization: `Bearer ${token}`, // Or 'Authorization': `Bearer ${token}` based on your middleware
+          Authorization: `Bearer ${token}`, // Or 'Authorization': `Bearer ${token}` based on your middleware
         },
         body: JSON.stringify(formData),
       });
+
+      if (response.status === 401) {
+        toast.error("Session expired. Please login again.");
+
+        // Clear Zustand auth
+        setUser(null);
+
+        // Remove token from localStorage
+        localStorage.removeItem("token");
+
+        // Redirect
+        window.location.href = "/login";
+
+        return;
+      }
 
       if (response.status === 413) {
         toast.error("Image size too large. Please use a smaller photo.");
         return;
       }
 
-       const text = await response.text();
-       let result;
+      const text = await response.text();
+      let result;
 
-       try {
+      try {
         result = JSON.parse(text);
       } catch (err) {
         console.error("Server returned non-JSON:", text);
@@ -129,13 +146,11 @@ const ProfilePage = () => {
         setUser(result.updatedUser);
 
         toast.success("Profile updated successfully");
-        
 
         setIsEditing(false);
       } else {
         toast.error(result.message || "Something went wrong");
       }
-
     } catch (error) {
       console.error("Profile Update Error:", error);
       toast.error("An error occurred during update.");
@@ -153,24 +168,37 @@ const ProfilePage = () => {
 
   return (
     <div className="pt-28 pb-20 px-6 max-w-6xl mx-auto">
-      <ToastContainer position="top-right" autoClose={1500}/>
+      <ToastContainer position="top-right" autoClose={1500} />
       {/* --- HEADER --- */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-gray-100 pb-10 lg:mb-12 gap-6">
         <div className="flex items-center gap-6">
-          <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full flex overflow-hidden border-2 border-indigo-600 p-1">
+          <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full flex overflow-hidden border-2 border-indigo-600 ">
             {isEditing ? (
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                className="self-center"
-              />
+              <>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="self-center hidden"
+                  id="profileImageUpload"
+                />
+
+                <label
+                  htmlFor="profileImageUpload"
+                  className="cursor-pointer bg-indigo-600 w-full h-full rounded-full text-white px-4 py-2 text-2xl inline-flex justify-center items-center hover:bg-black transition-all"
+                >
+                  Edit
+                </label>
+              </>
             ) : (
-               <Image
-                src={formData.avatar || "https://res.cloudinary.com/dyo0bdgnf/image/upload/v1778246491/avatar_dno6bq.png"}
+              <Image
+                src={
+                  formData.avatar ||
+                  "https://res.cloudinary.com/dyo0bdgnf/image/upload/v1778246491/avatar_dno6bq.png"
+                }
                 alt="Avatar"
                 fill
-                className="rounded-full object-fit opacity-90"
+                className="rounded-full object-cover opacity-90"
               />
             )}
           </div>
@@ -307,7 +335,6 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
