@@ -13,28 +13,34 @@ const NavBar = () => {
   const [slide, setSlide] = useState("Home");
   const [visible, setVisible] = useState(false); // Sidebar toggle
   const [mobileShopOpen, setMobileShopOpen] = useState(false); // Mobile dropdown toggle
-  const [mounted, setMounted] = useState(false);
-
+ 
   const { setOpen } = useSearchStore();
   const cart = useCartStore((state) => state.cart);
   const totalItems = useCartStore((state) =>
     state.cart.reduce((total, item) => total + item.quantity, 0),
   );
-
+  
+  const clearCart = useCartStore((state) => state.clearCart);
   const router = useRouter();
 
-  const { token, user, logOut } = useAuthStore();
+  // const { token, user, logOut } = useAuthStore();
+  // const hydrated = useAuthStore((state)=> state.hydrated);
+  const token = useAuthStore((state) => state.token);
+const user = useAuthStore((state) => state.user);
+const logOut = useAuthStore((state) => state.logOut);
+// const hydrated = useAuthStore((state) => state.hydrated);
 
   const handleLogout = () => {
     logOut();
     router.push("/login");
+    clearCart();
   };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setHydrated(true);
+  // }, []);
 
-  if (!mounted) return null;
+  //  if (!hydrated) return null;
 
   return (
     <div className="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-md px-6 py-5 flex items-center justify-between font-medium border-b border-gray-100">
@@ -111,7 +117,7 @@ const NavBar = () => {
           className="w-5 cursor-pointer opacity-80"
         />
         <div className="relative group hidden md:block">
-          <Link href={token ? "/proflie" : "/login"} className="">
+          <Link href={token ? "/profile" : "/login"} className="">
             <Image
               width={20}
               height={20}

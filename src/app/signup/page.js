@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/authStore';
 
 const SignUpPage = () => {
    const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +23,7 @@ const SignUpPage = () => {
       const response = await fetch("http://localhost:4001/api/v1/user/register", {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -37,6 +38,11 @@ const SignUpPage = () => {
         }
         return;
       }
+
+      useAuthStore.getState().setAuth({
+        token: result.token,
+        user: result.user,
+      });
 
       if (result) {
          toast.success("Signup successful!");

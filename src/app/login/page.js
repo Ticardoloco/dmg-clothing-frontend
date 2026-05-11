@@ -11,6 +11,7 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false)
    const { register, handleSubmit, formState: { errors } } = useForm();
+  //  const{ user} = useAuthStore()
 
    const router = useRouter()
    const onSubmit = async (data) =>{
@@ -23,7 +24,7 @@ const LoginPage = () => {
       const response = await fetch("http://localhost:4001/api/v1/user/login", {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -49,7 +50,7 @@ const LoginPage = () => {
       
 
       if (result) {
-        toast.success("Login successful 🎉");
+        toast.success( `Welcome back ${result.user?.username} 🎉`);
        setTimeout(() => {
          router.push("/")
        }, 1500);
@@ -58,7 +59,6 @@ const LoginPage = () => {
       
     } catch (error) {
      toast.error("Server error. Try again.");
-      console.error("Error:", error);
     }
 
     finally{

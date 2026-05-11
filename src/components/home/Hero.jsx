@@ -5,39 +5,16 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    // <div className='flex flex-col sm:flex-row border border-gray-400'>
-    //   <div className="w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0">
-    //     <div className="text-[#414141]">
-    //         <div className="flex items-center gap-2">
-    //             <p className="w-8 md:w-11 h-0.5 bg-[#414141]"></p>
-    //             <p className="font-medium text-sm md:text-base ">OUR BEST SELLER</p>
-    //         </div>
-
-    //         <h1 className="font-prata text-3xl sm:py-3 lg:text-5xl leading-relaxed">Latest Arrivals</h1>
-
-    //         <div className="flex items-center gap-2">
-    //             <Link href="/shop" ><p className="font-semibold text-sm md:text-base ">SHOP NOW</p></Link>
-    //             <p className="w-8 md:w-11 h-0.5 bg-[#414141] cursor-pointer"></p>
-    //         </div>
-    //     </div>
-    //   </div>
-    //   <Image
-    //   width={479}
-    //   height={383}
-    //   src="/main-bg.png"
-    //   alt='main bg'
-    //   className='w-full sm:w-1/2 h-95.75'
-    //   />
-    // </div>
+   
 
     <section className="relative w-full bg-white overflow-hidden text-center sm:text-left">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between py-12 lg:py-24 gap-12">
           
           {/* Left Content: Text & CTA */}
-          <div className="w-full lg:w-1/2 space-y-8 z-10">
-            <div className="space-y-4">
-              <h2 className="text-sm font-bold tracking-widest text-indigo-600 uppercase">
+          <div className="w-full lg:w-1/2 space-y-8 z-10 mt-10 lg:mt-0">
+            <div className="space-y-4 flex flex-col items-center lg:block text-center lg:text-start">
+              <h2 className=" text-sm font-bold tracking-widest text-indigo-600 uppercase">
                 New Arrivals 2026
               </h2>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
@@ -51,7 +28,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex justify-center sm:justify-normal flex-wrap gap-4">
+            <div className="flex justify-center lg:justify-normal flex-wrap gap-4">
               <Link 
                 href="/shop" 
                 className="px-10 py-4 bg-gray-900 text-white font-semibold rounded-md hover:bg-gray-800 transition-all shadow-lg hover:shadow-indigo-200/50"
@@ -67,7 +44,7 @@ const Hero = () => {
             </div>
 
             {/* Trust Badges / Stats */}
-            <div className="pt-8 flex justify-center sm:justify-items-normal gap-8 border-t border-gray-100">
+            <div className="pt-8 flex justify-center text-center lg:text-start lg:justify-items-normal gap-8 border-t border-gray-100">
               <div>
                 <p className="text-2xl font-bold text-gray-900">50k+</p>
                 <p className="text-sm text-gray-500">Happy Customers</p>
