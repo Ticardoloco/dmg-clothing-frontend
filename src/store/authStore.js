@@ -19,10 +19,20 @@ export const useAuthStore = create(
                     user,
                 }),
 
-            logOut: () => set({
+            setToken: (token) =>
+                set({
+                    token,
+                }),
+
+            logOut: () => {set({
                 token: null,
                 user: null,
-            }),
+            });
+            if (typeof window !== "undefined") {
+                localStorage.removeItem("auth-storage");
+                window.location.href = "/login";  // Redirect to login page after logout
+            }
+        },
 
             setHydrated: (state) => set({ hydrated: state }),
         }),

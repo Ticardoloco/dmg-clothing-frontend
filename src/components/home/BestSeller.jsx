@@ -39,7 +39,7 @@ const BestSeller = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {bestSellers.length === 0 ? Array.from({length: 5}).map((_, index)=>(
             <SkeletonCard key={index}/>
-          )) : bestSellers.slice(0,5).map((product) => (
+          )) : bestSellers.toReversed().slice(0, 5).map((product) => (
             <Link 
               key={product._id} 
               href={`/product/${product._id}`} 

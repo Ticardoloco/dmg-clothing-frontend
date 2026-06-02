@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useAuthStore } from "@/store/authStore";
 import { toast, ToastContainer } from "react-toastify"; // Optional: for premium notifications
 import BrandFeatures from "@/components/home/BrandFeatures";
+import { apiFetch } from "@/lib/tokenApi";
 
 const ProfilePage = () => {
   const { user, token, setUser } = useAuthStore();
@@ -96,7 +97,7 @@ const ProfilePage = () => {
   const handleUpdateProfile = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:4001/api/v1/user/update", {
+      const response = await apiFetch("http://localhost:4001/api/v1/user/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -52,8 +52,14 @@ const LoginPage = () => {
       if (result) {
         toast.success( `Welcome back ${result.user?.username} 🎉`);
        setTimeout(() => {
-         router.push("/")
-       }, 1500);
+         // FIX: Check the isAdmin flag from the backend payload response
+                    if (result.user?.isAdmin) {
+                        router.push("/admin"); // Route to admin layout
+                    } else {
+                        router.push("/"); // Route regular customers to front page shop
+                    }
+                }, 1500);
+    
       }
   
       

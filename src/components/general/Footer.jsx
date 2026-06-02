@@ -1,11 +1,16 @@
-'use client'
-import React from 'react';
+"use client"; 
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAuthStore } from '@/store/authStore';
+import { toast, ToastContainer } from 'react-toastify';
+import NewsletterForm from './NewslatterForm';
 
 const Footer = () => {
+ 
   return (
     <footer className="bg-white border-t border-gray-100 pt-8 sm:pt-20 pb-3">
+      <ToastContainer position='top-right' autoClose={1500} />
       <div className="container mx-auto px-6">
         
         <div className="flex flex-col lg:flex-row justify-between gap-12 mb-16">
@@ -22,19 +27,7 @@ const Footer = () => {
             </p>
             
             {/* Simple Newsletter */}
-            <div className="flex flex-col gap-3">
-              <p className="text-xs font-bold uppercase tracking-widest text-gray-900">Join our mailing list</p>
-              <form className="flex w-full max-w-md">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-indigo-600 transition-colors"
-                />
-                <button className="bg-black text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-indigo-600 transition-colors">
-                  Join
-                </button>
-              </form>
-            </div>
+           <NewsletterForm/>
           </div>
 
           {/* Quick Links Grid */}

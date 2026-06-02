@@ -1,3 +1,5 @@
+import { useAuthStore } from "@/store/authStore";
+
 const BASE_URI = "http://localhost:4001/api/v1/products";
 
 export const getProduct = async () =>{
@@ -14,3 +16,4 @@ export const getProduct = async () =>{
         return { products: [] };
     }
 }
+

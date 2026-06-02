@@ -5,12 +5,14 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { usePathname } from "next/navigation";
+
 import { useSearchStore } from "@/store/useSearchStore";
 import { useCartStore } from "@/store/useCartStore";
 import { useAuthStore } from "@/store/authStore";
 
 const NavBar = () => {
-  const [slide, setSlide] = useState("Home");
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false); // Sidebar toggle
   const [mobileShopOpen, setMobileShopOpen] = useState(false); // Mobile dropdown toggle
  
@@ -45,7 +47,7 @@ const logOut = useAuthStore((state) => state.logOut);
   return (
     <div className="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-md px-6 py-5 flex items-center justify-between font-medium border-b border-gray-100">
       {/* Logo */}
-      <Link href="/" onClick={() => setSlide("Home")}>
+      <Link href="/">
         <h2 className="font-bold text-2xl sm:text-3xl text-black font-prata">
           DMG
           <span className="text-sm sm:text-base font-semibold text-indigo-600">
@@ -57,15 +59,13 @@ const logOut = useAuthStore((state) => state.logOut);
       {/* Desktop Menu */}
       <ul className="hidden sm:flex gap-5 text-sm uppercase tracking-widest text-gray-700">
         <li
-          onClick={() => setSlide("Home")}
-          className={`cursor-pointer ${slide === "Home" ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
+          className={`cursor-pointer ${pathname === "/" ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
         >
           <Link href="/">Home</Link>
         </li>
 
         <li
-          onClick={() => setSlide("Shop")}
-          className={`relative group cursor-pointer ${slide === "Shop" ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
+          className={`relative group cursor-pointer ${pathname.includes("shop") ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
         >
           <Link href="/shop">Shop</Link>
           <div className="hidden z-10 absolute top-6 -left-10 shadow-lg group-hover:block transition-all">
@@ -92,15 +92,13 @@ const logOut = useAuthStore((state) => state.logOut);
         </li>
 
         <li
-          onClick={() => setSlide("About")}
-          className={`cursor-pointer ${slide === "About" ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
+          className={`cursor-pointer ${pathname.includes("about") ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
         >
           <Link href="/about">About</Link>
         </li>
 
         <li
-          onClick={() => setSlide("Contact")}
-          className={`cursor-pointer ${slide === "Contact" ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
+          className={`cursor-pointer ${pathname.includes("contact") ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
         >
           <Link href="/contact">Contact</Link>
         </li>
