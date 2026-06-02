@@ -497,7 +497,7 @@ const PlaceOrder = () => {
       };
 
       const response = await apiFetch(
-        "http://localhost:4001/api/v1/order/create",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/order/create`,
         {
           method: "POST",
           headers: {

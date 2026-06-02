@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/authStore";
 
-const BASE_URI = "http://localhost:4001/api/v1/products";
+const BASE_URI = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products`;
 
 export const getProduct = async () =>{
     try {

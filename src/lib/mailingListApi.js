@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/authStore";
 
-const API_BASE_URL = "http://localhost:4001/api/v1/mailinglist";
+const API_BASE_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/mailinglist`;
 export const getSubscribers = async () => {
     try {
         const token = useAuthStore.getState().token;

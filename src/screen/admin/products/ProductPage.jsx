@@ -214,7 +214,7 @@ const ManageProducts = () => {
       try {
         // 1. Send the DELETE request to your backend API
         const response = await fetch(
-          `http://localhost:4001/api/v1/products/delete/${id}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products/delete/${id}`,
           {
             method: "DELETE",
             headers: {
@@ -347,7 +347,7 @@ const ManageProducts = () => {
       if (editingProduct) {
         console.log("edit product", editingProduct);
         const response = await fetch(
-          `http://localhost:4001/api/v1/products/update/${editingProduct._id}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products/update/${editingProduct._id}`,
           {
             method: "PATCH",
             headers: {
@@ -368,7 +368,7 @@ const ManageProducts = () => {
         toast.success("Product updated successfully!");
       } else {
         const response = await fetch(
-          `http://localhost:4001/api/v1/products/create`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/products/create`,
           {
             method: "POST",
             headers: {

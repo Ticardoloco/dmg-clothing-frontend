@@ -97,7 +97,7 @@ const ProfilePage = () => {
   const handleUpdateProfile = async () => {
     setLoading(true);
     try {
-      const response = await apiFetch("http://localhost:4001/api/v1/user/update", {
+      const response = await apiFetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/user/update`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

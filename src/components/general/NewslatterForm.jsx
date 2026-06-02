@@ -19,7 +19,7 @@ export default function NewsletterForm() {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:4001/api/v1/mailinglist/subscribe", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/mailinglist/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

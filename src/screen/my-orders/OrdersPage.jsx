@@ -21,7 +21,7 @@ const OrdersPage = () => {
     console.log(token);
     try {
       const response = await apiFetch(
-        "http://localhost:4001/api/v1/order/my-orders",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/order/my-orders`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

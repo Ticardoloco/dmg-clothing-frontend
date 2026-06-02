@@ -7,7 +7,7 @@ export const getMessages = async () => {
     const token = useAuthStore.getState().token;
 
     // 2. Pass it inside the headers option
-    const res = await fetch("http://localhost:4001/api/v1/contact/all", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/contact/all`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`,
@@ -33,7 +33,7 @@ export const getMessages = async () => {
 export const deleteMessage = async (messageId) => {
     try {
         const token = useAuthStore.getState().token;
-        const res = await fetch(`http://localhost:4001/api/v1/contact/delete/${messageId}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/contact/delete/${messageId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`

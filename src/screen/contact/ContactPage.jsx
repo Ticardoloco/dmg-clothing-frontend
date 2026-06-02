@@ -29,7 +29,7 @@ const ContactPage = () => {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:4001/api/v1/contact/create",
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/contact/create`,
         {
           method: "POST",
           headers: {

@@ -20,7 +20,7 @@ const SignUpPage = () => {
   
     try {
      
-      const response = await fetch("http://localhost:4001/api/v1/user/register", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/user/register`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
