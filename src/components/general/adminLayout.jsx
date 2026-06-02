@@ -119,6 +119,7 @@
 //             >
 //               Dashboard Overview
 //             </Link>
+            
 //             <Link
 //               href="/admin/products"
 //               onClick={() => setIsSidebarOpen(false)}
@@ -126,12 +127,29 @@
 //             >
 //               Manage Products
 //             </Link>
+            
 //             <Link
 //               href="/admin/orders"
 //               onClick={() => setIsSidebarOpen(false)}
 //               className={`transition-colors py-1 ${isActive("/admin/orders")}`}
 //             >
 //               Customer Orders
+//             </Link>
+
+//             <Link
+//               href="/admin/users"
+//               onClick={() => setIsSidebarOpen(false)}
+//               className={`transition-colors py-1 ${isActive("/admin/users")}`}
+//             >
+//               User Management
+//             </Link>
+
+//             <Link
+//               href="/admin/contacts"
+//               onClick={() => setIsSidebarOpen(false)}
+//               className={`transition-colors py-1 ${isActive("/admin/contacts")}`}
+//             >
+//               Contact Messages
 //             </Link>
 //           </nav>
 //         </div>
@@ -156,6 +174,7 @@
 //     </div>
 //   );
 // }
+
 
 "use client";
 import { useEffect, useState } from "react";
@@ -309,6 +328,14 @@ export default function AdminLayout({ children }) {
               className={`transition-colors py-1 ${isActive("/admin/contacts")}`}
             >
               Contact Messages
+            </Link>
+
+            <Link
+              href="/admin/mailing-list"
+              onClick={() => setIsSidebarOpen(false)}
+              className={`transition-colors py-1 ${isActive("/admin/mailing-list")}`}
+            >
+              Mailing List
             </Link>
           </nav>
         </div>

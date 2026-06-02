@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  getMessages,
-  deleteMessage,
-} from "@/lib/contactApi";
+import { getMessages, deleteMessage } from "@/lib/contactApi";
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -11,6 +8,8 @@ const ContactMessages = () => {
   const [messages, setMessages] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const messagesPerPage = 10;
 
   const fetchMessages = async () => {
     try {
@@ -29,20 +28,24 @@ const ContactMessages = () => {
     fetchMessages();
   }, []);
 
-  
-  
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
   // --- DELETE MESSAGE RECORD ---
   const handleDeleteMessage = async (messageId) => {
     if (
       !window.confirm(
-        "Are you sure you want to permanently delete this contact inquiry? This cannot be undone."
+        "Are you sure you want to permanently delete this contact inquiry? This cannot be undone.",
       )
     ) {
       return;
     }
 
     try {
-      setMessages((prevMessages) => prevMessages.filter((msg) => msg._id !== messageId));
+      setMessages((prevMessages) =>
+        prevMessages.filter((msg) => msg._id !== messageId),
+      );
 
       if (typeof deleteMessage === "function") {
         await deleteMessage(messageId);
@@ -89,6 +92,17 @@ const ContactMessages = () => {
     );
   });
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredMessages.length / messagesPerPage);
+
+  const indexOfLastMessage = currentPage * messagesPerPage;
+  const indexOfFirstMessage = indexOfLastMessage - messagesPerPage;
+
+  const currentMessages = filteredMessages.slice(
+    indexOfFirstMessage,
+    indexOfLastMessage,
+  );
+
   if (loading)
     return (
       <div className="pt-40 text-center font-prata">
@@ -130,7 +144,7 @@ const ContactMessages = () => {
             No incoming correspondence found.
           </div>
         ) : (
-          filteredMessages.map((msg) => {
+          currentMessages.map((msg) => {
             const statusStyles = getStatusStyle(msg.status);
             const isUnread = msg.status?.toLowerCase() !== "read";
 
@@ -138,7 +152,9 @@ const ContactMessages = () => {
               <div
                 key={msg._id}
                 className={`border bg-white shadow-sm transition-all overflow-hidden ${
-                  isUnread ? "border-indigo-100 ring-1 ring-indigo-50/50" : "border-gray-100"
+                  isUnread
+                    ? "border-indigo-100 ring-1 ring-indigo-50/50"
+                    : "border-gray-100"
                 }`}
               >
                 {/* Top Context Summary Strip */}
@@ -158,8 +174,6 @@ const ContactMessages = () => {
 
                   {/* Status controls and delete actions */}
                   <div className="flex items-center flex-wrap gap-2">
-                    
-
                     {/* Hardcoded Minimal Trash SVG (Perfect match to Orders module) */}
                     <button
                       onClick={() => handleDeleteMessage(msg._id)}
@@ -171,7 +185,11 @@ const ContactMessages = () => {
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="none"
-                        style={{ width: "14px", height: "14px", display: "block" }}
+                        style={{
+                          width: "14px",
+                          height: "14px",
+                          display: "block",
+                        }}
                         className="w-3.5 h-3.5 text-gray-400 hover:text-red-600 transition-colors"
                       >
                         <path
@@ -195,7 +213,6 @@ const ContactMessages = () => {
 
                 {/* Primary Content Grid */}
                 <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-xs items-start">
-                  
                   {/* Column 1: Sender Identification */}
                   <div className="space-y-1 border-b md:border-b-0 md:border-r border-gray-100 pb-4 md:pb-0 md:pr-2">
                     <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
@@ -211,8 +228,6 @@ const ContactMessages = () => {
 
                   {/* Column 2 & 3: Message Text Area (Spanned for enhanced readability) */}
                   <div className="md:col-span-3 space-y-2">
-                    
-
                     <div>
                       <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
                         Inquiry Body
@@ -222,13 +237,49 @@ const ContactMessages = () => {
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             );
           })
         )}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-10 flex-wrap">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 border border-gray-200 bg-white disabled:opacity-40 disabled:cursor-not-allowed hover:border-indigo-500 transition"
+          >
+            Previous
+          </button>
+
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(index + 1)}
+              className={`w-10 h-10 border text-sm font-semibold transition ${
+                currentPage === index + 1
+                  ? "bg-indigo-600 text-white border-indigo-600"
+                  : "bg-white border-gray-200 hover:border-indigo-500"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 border border-gray-200 bg-white disabled:opacity-40 disabled:cursor-not-allowed hover:border-indigo-500 transition"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -43,6 +43,8 @@ const CustomerOrders = () => {
   const [orders, setOrders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ordersPerPage = 10;
 
   const fetchOrders = async () => {
     try {
@@ -60,6 +62,10 @@ const CustomerOrders = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
 
   // --- ORDER FULFILLMENT STATUS HANDLER ---
   const handleStatusChange = async (orderId, newStatus) => {
@@ -207,6 +213,17 @@ const CustomerOrders = () => {
     );
   });
 
+  // Pagination Logic
+  const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+
+  const indexOfLastOrder = currentPage * ordersPerPage;
+  const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
+
+  const currentOrders = filteredOrders.toReversed().slice(
+    indexOfFirstOrder,
+    indexOfLastOrder,
+  );
+
   if (loading)
     return (
       <div className="pt-40 text-center font-prata">
@@ -248,7 +265,7 @@ const CustomerOrders = () => {
             No matching orders found.
           </div>
         ) : (
-          filteredOrders.map((order) => {
+          currentOrders.map((order) => {
             const styles = getStatusStyle(order.status);
             const paymentStyles = getPaymentStatusStyle(
               order.paymentStatus || order.payment,
@@ -416,15 +433,13 @@ const CustomerOrders = () => {
                       {address.email || "No Email Provided"}
                     </p>
 
-                     <p className="text-gray-500 font-medium mt-0.5">
+                    <p className="text-gray-500 font-medium mt-0.5">
                       {order.user.username || "No Phone Registered"}
                     </p>
-                    
+
                     <p className="text-gray-500 font-medium mt-0.5">
                       {address.phone || "No Phone Registered"}
                     </p>
-                    
-                   
                   </div>
 
                   {/* Column 2: Shipping Address Area */}
@@ -458,10 +473,12 @@ const CustomerOrders = () => {
                               <span className="font-bold text-gray-700 bg-white border border-gray-200 px-1 text-[8px]">
                                 {item.size || "Free"}
                               </span>
-                              {item.color && <div>
-                                <span>•</span>
-                              <OrderColorPreview colorName={item.color} />
-                                </div>}
+                              {item.color && (
+                                <div>
+                                  <span>•</span>
+                                  <OrderColorPreview colorName={item.color} />
+                                </div>
+                              )}
                               <span>•</span>
                               <span className="italic">
                                 {item.product?.subCategory || "Streetwear"}
@@ -512,6 +529,43 @@ const CustomerOrders = () => {
           })
         )}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-10 flex-wrap">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 border border-gray-200 bg-white disabled:opacity-40 disabled:cursor-not-allowed hover:border-indigo-500 transition"
+          >
+            Previous
+          </button>
+
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(index + 1)}
+              className={`w-10 h-10 border text-sm font-semibold transition ${
+                currentPage === index + 1
+                  ? "bg-indigo-600 text-white border-indigo-600"
+                  : "bg-white border-gray-200 hover:border-indigo-500"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 border border-gray-200 bg-white disabled:opacity-40 disabled:cursor-not-allowed hover:border-indigo-500 transition"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };

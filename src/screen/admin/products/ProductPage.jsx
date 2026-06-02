@@ -47,6 +47,8 @@ const ManageProducts = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Track whether we are currently creating or modifying an item
   const [editingProduct, setEditingProduct] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
 
   // Image Upload States
   const [imageFiles, setImageFiles] = useState([]);
@@ -147,6 +149,10 @@ const ManageProducts = () => {
       setVariants([]);
     }
   }, [formData.sizes, formData.colors]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -275,7 +281,6 @@ const ManageProducts = () => {
     setImagePreviews([]);
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -391,11 +396,20 @@ const ManageProducts = () => {
     }
   };
 
+
   const filteredProducts = products.filter(
     (product) =>
       product.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.subCategory?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const startIndex = (currentPage - 1) * productsPerPage;
+
+  const paginatedProducts = filteredProducts
+    .toReversed()
+    .slice(startIndex, startIndex + productsPerPage);
 
   const calculateTotalStock = (product) => {
     if (!product.variants || product.variants.length === 0) return 0;
@@ -445,7 +459,7 @@ const ManageProducts = () => {
 
       {/* --- MOBILE LAYOUT --- */}
       <div className="block md:hidden space-y-4">
-        {filteredProducts.map((product) => {
+        {paginatedProducts.map((product) => {
           const totalStock = calculateTotalStock(product);
           return (
             <div
@@ -453,7 +467,7 @@ const ManageProducts = () => {
               className="border border-gray-100 bg-white p-4 shadow-sm space-y-4 rounded-sm relative group"
             >
               <div className="flex gap-3">
-                <div className="w-16 h-20 bg-gray-50 border border-gray-200 flex-shrink-0 flex items-center justify-center font-mono text-[8px] text-gray-400 uppercase tracking-tighter rounded-sm overflow-hidden relative">
+                <div className="w-16 h-20 bg-gray-50 border border-gray-200 shrink-0 flex items-center justify-center font-mono text-[8px] text-gray-400 uppercase tracking-tighter rounded-sm overflow-hidden relative">
                   {product.image?.[0] && (
                     <Image
                       fill
@@ -587,7 +601,7 @@ const ManageProducts = () => {
         </table>
         <table className="w-full text-left border-collapse text-xs">
           <tbody className="divide-y divide-gray-100">
-            {filteredProducts.toReversed().map((product) => {
+            {paginatedProducts.map((product) => {
               const totalStock = calculateTotalStock(product);
               return (
                 <tr
@@ -595,7 +609,7 @@ const ManageProducts = () => {
                   className="hover:bg-gray-50/40 transition-colors align-top group"
                 >
                   <td className="p-4 flex gap-4 w-[35%]">
-                    <div className="w-14 h-16 bg-gray-50 border border-gray-200 flex-shrink-0 flex items-center justify-center font-mono text-[8px] text-gray-400 uppercase tracking-tighter relative overflow-hidden">
+                    <div className="w-14 h-16 bg-gray-50 border border-gray-200 shrink-0 flex items-center justify-center font-mono text-[8px] text-gray-400 uppercase tracking-tighter relative overflow-hidden">
                       {product.image?.[0] && (
                         <Image
                           fill
@@ -711,6 +725,42 @@ const ManageProducts = () => {
           </tbody>
         </table>
       </div>
+
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 pt-8 flex-wrap">
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+            className="px-4 py-2 border border-gray-300 text-sm disabled:opacity-50"
+          >
+            Previous
+          </button>
+
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => setCurrentPage(index + 1)}
+              className={`px-4 py-2 border text-sm transition-all ${
+                currentPage === index + 1
+                  ? "bg-indigo-600 text-white border-indigo-600"
+                  : "border-gray-300 hover:border-indigo-400"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          <button
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 border border-gray-300 text-sm disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
 
       {/* --- ADD / EDIT PRODUCT MODAL WINDOW --- */}
       {isModalOpen && (
@@ -1016,7 +1066,6 @@ const ManageProducts = () => {
 
               {/* Submit Buttons */}
               <div className="flex gap-2 pt-2 border-t border-gray-50">
-               
                 <button
                   type="submit"
                   disabled={isSubmitting}
