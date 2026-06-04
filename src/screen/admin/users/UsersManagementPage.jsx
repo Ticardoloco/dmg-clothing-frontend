@@ -15,7 +15,7 @@ const UserRoleBadge = ({ role }) => {
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 border text-[9px] font-bold uppercase tracking-widest ${badgeStyle}`}
+      className={`inline-flex items-center px-2 py-0.5 border text-sm font-bold uppercase tracking-widest ${badgeStyle}`}
     >
       {role}
     </span>
@@ -187,7 +187,7 @@ const UserManagement = () => {
             User{" "}
             <span className="text-indigo-600 italic font-light">Control</span>
           </h1>
-          <p className="text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
+          <p className="text-sm font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
             Manage account privileges, roles, and security access states
           </p>
         </div>
@@ -198,7 +198,7 @@ const UserManagement = () => {
             placeholder="Search by Name, Email or ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-200 px-4 py-3 text-base sm:text-[10px] font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base sm:text-sm font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
           />
         </div>
       </div>
@@ -219,13 +219,13 @@ const UserManagement = () => {
                 className="border border-gray-100 bg-white shadow-sm hover:border-gray-200 transition-all overflow-hidden"
               >
                 {/* User Top Summary Header Bar */}
-                <div className="bg-gray-50/70 px-4 py-3 border-b border-gray-100 flex flex-wrap items-center justify-between gap-4 text-xs">
+                <div className="bg-gray-50/70 px-4 py-3 border-b border-gray-100 flex flex-wrap items-center justify-between gap-4 text-sm">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                     <span className="font-mono text-gray-400 font-bold uppercase">
                       {user._id}
                     </span>
                     <span className="text-gray-300 hidden sm:inline">|</span>
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 font-medium text-sm md:text-base">
                       Registered:{" "}
                       {user.createdAt
                         ? new Date(user.createdAt).toLocaleDateString()
@@ -247,7 +247,7 @@ const UserManagement = () => {
                         onChange={(e) =>
                           handleStatusChange(user._id, e.target.value)
                         }
-                        className="bg-transparent border-none text-[9px] font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
+                        className="bg-transparent border-none text-sm font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
                       >
                         <option
                           value="active"
@@ -302,43 +302,43 @@ const UserManagement = () => {
                 </div>
 
                 {/* Main Identity Content Block — Upgraded to md:grid-cols-4 */}
-                <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-xs items-center">
+                <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-sm items-center">
                   {/* Column 1: Profile Details */}
                   <div className="space-y-0.5">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Account Holder
                     </span>
-                    <h4 className="font-bold text-gray-900 text-sm capitalize">
+                    <h4 className="font-bold text-gray-900 text-sm md:text-base capitalize">
                       {user.username || "Anonymous User"}
                     </h4>
-                    <p className="text-gray-500 font-mono tracking-tight lowercase">
+                    <p className="text-gray-500 font-mono tracking-tight text-sm md:text-base lowercase">
                       {user.email}
                     </p>
                   </div>
 
                   {/* Column 2: Phone / Contact Context */}
                   <div>
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Contact Line
                     </span>
-                    <p className="text-gray-700 font-mono font-medium">
+                    <p className="text-gray-700 font-mono font-medium text-sm md:text-base">
                       {user.phone || "No Phone Profile Linked"}
                     </p>
                   </div>
 
                   {/* Column 3: Brand New Last Seen Tracker Module */}
                   <div>
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Last Active State
                     </span>
-                    <p className="text-gray-600 font-medium font-mono text-[11px]">
+                    <p className="text-gray-600 font-medium font-mono text-sm md:text-base">
                       {formatLastSeen(user.lastSeen || user.updatedAt)}
                     </p>
                   </div>
 
                   {/* Column 4: System Authority Rights Preview */}
                   <div className="flex flex-col items-start md:items-end justify-center">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Privilege Classification
                     </span>
                     <UserRoleBadge

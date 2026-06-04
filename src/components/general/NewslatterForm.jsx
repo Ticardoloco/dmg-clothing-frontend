@@ -47,7 +47,7 @@ export default function NewsletterForm() {
   return (
     <div className="flex flex-col gap-3">
       <ToastContainer position='top-right' autoClose={1500} />
-      <p className="text-xs font-bold uppercase tracking-widest text-gray-900">Join our mailing list</p>
+      <p className="text-base md:text-lg font-bold uppercase tracking-widest text-gray-900">Join our mailing list</p>
       <form onSubmit={handleSubmit} className="flex w-full max-w-md">
         <input 
           type="email" 
@@ -55,7 +55,7 @@ export default function NewsletterForm() {
           value={formData.email}
           onChange={handleChange}
           name='email'
-          className="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-indigo-600 transition-colors"
+          className="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-base md:text-lg focus:outline-none focus:border-indigo-600 transition-colors"
         />
         <button type='submit' disabled={loading} className="bg-black text-white px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-indigo-600 transition-colors">
           {loading ? "Subscribing..." : "Subscribe"}

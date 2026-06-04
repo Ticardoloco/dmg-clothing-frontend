@@ -71,7 +71,7 @@ const JalabiyaPage = () => {
             <h1 className='text-4xl md:text-6xl font-bold font-prata text-gray-900 uppercase leading-tight'>
                 The <span className='text-indigo-600 italic font-light wh'>Jalabiya</span> Series
             </h1>
-            <p className='text-gray-500 mt-4 text-sm md:text-base leading-relaxed'>
+            <p className='text-gray-500 mt-4 text-base md:text-lg leading-relaxed'>
                 Traditional silhouettes reimagined for the modern world. Our Jalabiyas offer unparalleled comfort without compromising on presence. Meticulously tailored for a clean, flowing drape.
             </p>
         </div>

@@ -432,7 +432,7 @@ const ManageProducts = () => {
             Manage{" "}
             <span className="text-indigo-600 italic font-light">Products</span>
           </h1>
-          <p className="text-[9px] md:text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
+          <p className="text-xs md:text-sm font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
             View stock variations, edit catalog, and add new clothes
           </p>
         </div>
@@ -443,14 +443,14 @@ const ManageProducts = () => {
             placeholder="Search items..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-200 px-4 py-3 text-sm md:text-[10px] font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full md:w-56 transition-all"
+            className="border border-gray-200 px-4 py-3 text-sm md:text-base font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full md:w-56 transition-all"
           />
           <button
             onClick={() => {
               setEditingProduct(null);
               setIsModalOpen(true);
             }}
-            className="bg-indigo-600 text-white px-6 py-3 text-xs md:text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-all h-11 whitespace-nowrap w-full sm:w-auto text-center"
+            className="bg-indigo-600 text-white px-6 py-3 text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-black transition-all h-11 whitespace-nowrap w-full sm:w-auto text-center"
           >
             Add New Product
           </button>
@@ -467,7 +467,7 @@ const ManageProducts = () => {
               className="border border-gray-100 bg-white p-4 shadow-sm space-y-4 rounded-sm relative group"
             >
               <div className="flex gap-3">
-                <div className="w-16 h-20 bg-gray-50 border border-gray-200 shrink-0 flex items-center justify-center font-mono text-[8px] text-gray-400 uppercase tracking-tighter rounded-sm overflow-hidden relative">
+                <div className="w-16 h-20 bg-gray-50 border border-gray-200 shrink-0 flex items-center justify-center font-mono text-xs text-gray-400 uppercase tracking-tighter rounded-sm overflow-hidden relative">
                   {product.image?.[0] && (
                     <Image
                       fill
@@ -486,8 +486,8 @@ const ManageProducts = () => {
                     <h2 className="font-bold text-gray-900 text-base leading-tight truncate max-w-[70%]">
                       {product.name}
                     </h2>
-                    {product.bestLetter && (
-                      <span className="bg-amber-50 text-amber-700 text-[8px] font-black uppercase tracking-wider px-1 border border-amber-200 whitespace-nowrap">
+                    {product.bestSeller && (
+                      <span className="bg-amber-50 text-amber-700 text-xs font-black uppercase tracking-wider px-1 border border-amber-200 whitespace-nowrap">
                         Best Seller
                       </span>
                     )}
@@ -495,7 +495,7 @@ const ManageProducts = () => {
                   <p className="text-gray-400 text-xs line-clamp-2 leading-relaxed">
                     {product.description || "No description added."}
                   </p>
-                  <span className="font-mono text-[9px] text-gray-400 block tracking-tighter uppercase">
+                  <span className="font-mono text-xs text-gray-400 block tracking-tighter uppercase">
                     ID: {product._id}
                   </span>
                 </div>
@@ -503,23 +503,23 @@ const ManageProducts = () => {
 
               <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-50 text-xs">
                 <div>
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-gray-400 block mb-1">
+                  <span className="text-xs uppercase tracking-wider font-bold text-gray-400 block mb-1">
                     Classification
                   </span>
                   <div className="flex flex-wrap gap-1">
-                    <span className="bg-indigo-50 text-indigo-700 font-bold px-1.5 py-0.5 text-[8px] uppercase tracking-wider border border-indigo-100">
+                    <span className="bg-indigo-50 text-indigo-700 font-bold px-1.5 py-0.5 text-xs uppercase tracking-wider border border-indigo-100">
                       {product.category}
                     </span>
-                    <span className="bg-gray-100 text-gray-700 font-bold px-1.5 py-0.5 text-[8px] uppercase tracking-wider border border-gray-200">
+                    <span className="bg-gray-100 text-gray-700 font-bold px-1.5 py-0.5 text-xs uppercase tracking-wider border border-gray-200">
                       {product.subCategory}
                     </span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-gray-400 block mb-1">
+                  <span className="text-xs uppercase tracking-wider font-bold text-gray-400 block mb-1">
                     Price
                   </span>
-                  <span className="font-bold text-gray-900 text-sm">
+                  <span className="font-bold text-gray-900 text-base">
                     ₦{product.price?.toLocaleString()}
                   </span>
                 </div>
@@ -528,13 +528,13 @@ const ManageProducts = () => {
               <div className="pt-2 border-t border-gray-50 space-y-2">
                 {product.sizes?.length > 0 && (
                   <div className="flex flex-wrap gap-1 items-center">
-                    <span className="text-[9px] uppercase tracking-wider font-bold text-gray-400 mr-1.5">
+                    <span className="text-xs uppercase tracking-wider font-bold text-gray-400 mr-1.5">
                       Sizes:
                     </span>
                     {product.sizes.map((s, idx) => (
                       <span
                         key={idx}
-                        className="bg-white border border-gray-200 px-1 text-[8px] font-black text-gray-800"
+                        className="bg-white border border-gray-200 px-1 text-xs font-black text-gray-800"
                       >
                         {s}
                       </span>
@@ -543,7 +543,7 @@ const ManageProducts = () => {
                 )}
                 {product.colors?.length > 0 && (
                   <div className="flex flex-wrap gap-1 items-center">
-                    <span className="text-[9px] uppercase tracking-wider font-bold text-gray-400 mr-1.5">
+                    <span className="text-xs uppercase tracking-wider font-bold text-gray-400 mr-1.5">
                       Colors:
                     </span>
                     {product.colors.map((c, idx) => (
@@ -553,23 +553,23 @@ const ManageProducts = () => {
                 )}
               </div>
 
-              <div className="pt-3 border-t border-gray-50 flex justify-between items-center gap-4">
+              <div className="pt-3 border-t border-gray-50 flex justify-between items-center gap-2 md:gap-4">
                 <div className="flex gap-2">
                   <button
                     onClick={() => handleEditClick(product)}
-                    className="text-indigo-600 hover:text-black font-bold uppercase tracking-wider text-[10px] bg-indigo-50 px-3 py-1.5"
+                    className="text-indigo-600 hover:text-black font-bold uppercase tracking-wider text-xs bg-indigo-50 px-3 py-1.5"
                   >
                     Edit Product
                   </button>
                   <button
                     onClick={() => handleDeleteProduct(product._id)}
-                    className="text-red-600 hover:text-red-800 font-bold uppercase tracking-wider text-[10px] bg-red-50 px-3 py-1.5"
+                    className="text-red-600 hover:text-red-800 font-bold uppercase tracking-wider text-xs bg-red-50 px-3 py-1.5"
                   >
                     Delete
                   </button>
                 </div>
                 <span
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest border ${
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold uppercase tracking-widest border ${
                     totalStock === 0
                       ? "bg-red-50 text-red-700 border-red-200"
                       : "bg-gray-50 text-gray-700 border-gray-200"
@@ -588,9 +588,9 @@ const ManageProducts = () => {
 
       {/* --- DESKTOP TABLE --- */}
       <div className="hidden md:block border border-gray-100 bg-white overflow-hidden shadow-sm">
-        <table className="w-full text-left border-collapse text-xs">
+        <table className="w-full text-left border-collapse text-sm">
           <thead>
-            <tr className="bg-gray-50 border-b border-gray-100 text-gray-400 text-[9px] font-bold uppercase tracking-widest">
+            <tr className="bg-gray-50 border-b border-gray-100 text-gray-400 text-xs font-bold uppercase tracking-widest">
               <th className="p-4 w-[35%]">Item Details</th>
               <th className="p-4 w-[25%]">Categories & Sizes</th>
               <th className="p-4 w-[15%]">Price</th>
@@ -599,7 +599,7 @@ const ManageProducts = () => {
             </tr>
           </thead>
         </table>
-        <table className="w-full text-left border-collapse text-xs">
+        <table className="w-full text-left border-collapse text-sm">
           <tbody className="divide-y divide-gray-100">
             {paginatedProducts.map((product) => {
               const totalStock = calculateTotalStock(product);
@@ -609,7 +609,7 @@ const ManageProducts = () => {
                   className="hover:bg-gray-50/40 transition-colors align-top group"
                 >
                   <td className="p-4 flex gap-4 w-[35%]">
-                    <div className="w-14 h-16 bg-gray-50 border border-gray-200 shrink-0 flex items-center justify-center font-mono text-[8px] text-gray-400 uppercase tracking-tighter relative overflow-hidden">
+                    <div className="w-14 h-16 bg-gray-50 border border-gray-200 shrink-0 flex items-center justify-center font-mono text-xs text-gray-400 uppercase tracking-tighter relative overflow-hidden">
                       {product.image?.[0] && (
                         <Image
                           fill
@@ -629,15 +629,15 @@ const ManageProducts = () => {
                           {product.name}
                         </div>
                         {product.bestSeller && (
-                          <span className="bg-amber-50 text-amber-700 text-[8px] font-black uppercase tracking-wider px-1 border border-amber-200">
+                          <span className="bg-amber-50 text-amber-700 text-xs font-black uppercase tracking-wider px-1 border border-amber-200">
                             Best Seller
                           </span>
                         )}
                       </div>
-                      <p className="text-gray-400 text-[11px] leading-relaxed max-w-sm line-clamp-2">
+                      <p className="text-gray-400 text-xs leading-relaxed max-w-sm line-clamp-2">
                         {product.description || "No description added."}
                       </p>
-                      <span className="font-mono text-[9px] text-gray-400 block pt-1 uppercase tracking-tighter">
+                      <span className="font-mono text-xs text-gray-400 block pt-1 uppercase tracking-tighter">
                         ID: {product._id}
                       </span>
                     </div>
@@ -645,10 +645,10 @@ const ManageProducts = () => {
 
                   <td className="p-4 space-y-3 pt-5 w-[25%]">
                     <div className="flex items-center gap-1.5">
-                      <span className="bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 text-[9px] uppercase tracking-wider border border-indigo-100">
+                      <span className="bg-indigo-50 text-indigo-700 font-bold px-2 py-0.5 text-xs uppercase tracking-wider border border-indigo-100">
                         {product.category}
                       </span>
-                      <span className="bg-gray-100 text-gray-700 font-bold px-2 py-0.5 text-[9px] uppercase tracking-wider border border-gray-200">
+                      <span className="bg-gray-100 text-gray-700 font-bold px-2 py-0.5 text-xs uppercase tracking-wider border border-gray-200">
                         {product.subCategory}
                       </span>
                     </div>
@@ -656,13 +656,13 @@ const ManageProducts = () => {
                     <div className="space-y-1.5 pt-1">
                       {product.sizes?.length > 0 && (
                         <div className="flex flex-wrap gap-1 items-center">
-                          <span className="text-[9px] uppercase tracking-wider font-bold text-gray-400 mr-1">
+                          <span className="text-sm uppercase tracking-wider font-bold text-gray-400 mr-1">
                             Sizes:
                           </span>
                           {product.sizes.map((s, idx) => (
                             <span
                               key={idx}
-                              className="bg-white border border-gray-200 px-1 text-[8px] font-black text-gray-800"
+                              className="bg-white border border-gray-200 px-1 text-xs font-black text-gray-800"
                             >
                               {s}
                             </span>
@@ -671,7 +671,7 @@ const ManageProducts = () => {
                       )}
                       {product.colors?.length > 0 && (
                         <div className="flex flex-wrap gap-1 items-center pt-1">
-                          <span className="text-[9px] uppercase tracking-wider font-bold text-gray-400 mr-1">
+                          <span className="text-xs uppercase tracking-wider font-bold text-gray-400 mr-1">
                             Colors:
                           </span>
                           {product.colors.map((c, idx) => (
@@ -682,7 +682,7 @@ const ManageProducts = () => {
                     </div>
                   </td>
 
-                  <td className="p-4 font-bold text-gray-900 pt-6 text-sm w-[15%]">
+                  <td className="p-4 font-bold text-gray-900 pt-6 text-base w-[15%]">
                     ₦{product.price?.toLocaleString()}
                   </td>
 
@@ -707,13 +707,13 @@ const ManageProducts = () => {
                     <div className="flex items-center justify-center gap-2">
                       <button
                         onClick={() => handleEditClick(product)}
-                        className="opacity-80 group-hover:opacity-100 text-indigo-600 hover:text-white font-bold uppercase tracking-widest text-[10px] border border-indigo-200 hover:border-indigo-600 hover:bg-indigo-600 px-3 py-1.5 transition-all"
+                        className="opacity-80 group-hover:opacity-100 text-indigo-600 hover:text-white font-bold uppercase tracking-widest text-xs border border-indigo-200 hover:border-indigo-600 hover:bg-indigo-600 px-3 py-1.5 transition-all"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDeleteProduct(product._id)}
-                        className="opacity-80 group-hover:opacity-100 text-red-600 hover:text-white font-bold uppercase tracking-widest text-[10px] border border-red-200 hover:border-red-600 hover:bg-red-600 px-3 py-1.5 transition-all"
+                        className="opacity-80 group-hover:opacity-100 text-red-600 hover:text-white font-bold uppercase tracking-widest text-xs border border-red-200 hover:border-red-600 hover:bg-red-600 px-3 py-1.5 transition-all"
                       >
                         Delete
                       </button>
@@ -766,12 +766,12 @@ const ManageProducts = () => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
           <div className="bg-white border border-gray-200 w-full sm:max-w-lg p-5 sm:p-6 shadow-xl space-y-4 rounded-t-lg sm:rounded-sm max-h-[92vh] sm:max-h-[90vh] overflow-y-auto transition-transform">
-            <div className="flex justify-between items-start sticky top-0 bg-white pb-2 z-10">
+            <div className="flex justify-between items-start sticky -top-6 bg-white pb-2 z-10">
               <div>
                 <h3 className="font-prata text-lg uppercase tracking-tight text-gray-900">
                   {editingProduct ? "Edit Product Details" : "Add New Product"}
                 </h3>
-                <p className="text-[9px] font-bold text-gray-400 tracking-widest uppercase mt-0.5">
+                <p className="text-sm font-bold text-gray-400 tracking-widest uppercase mt-0.5">
                   {editingProduct
                     ? `Modifying ID: ${editingProduct._id}`
                     : "Fill out the clothing details below"}
@@ -797,10 +797,10 @@ const ManageProducts = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs">
+            <form onSubmit={handleSubmit} className="space-y-4 text-sm">
               {/* --- IMAGE UPLOAD BOX --- */}
               <div className="space-y-1.5">
-                <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                   Product Images *
                 </label>
 
@@ -828,7 +828,7 @@ const ManageProducts = () => {
                       d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                     />
                   </svg>
-                  <p className="mt-1.5 text-gray-500 text-[11px] font-medium leading-relaxed max-w-xs mx-auto">
+                  <p className="mt-1.5 text-gray-500 text-sm font-medium leading-relaxed max-w-xs mx-auto">
                     Drag/drop files or{" "}
                     <span className="text-indigo-600 font-bold">
                       browse desktop
@@ -848,7 +848,7 @@ const ManageProducts = () => {
                 {/* Selected Images Grid Preview */}
                 {imagePreviews.length > 0 && (
                   <div className="border border-gray-100 bg-white p-2.5 space-y-2">
-                    <p className="text-[9px] text-gray-400 uppercase tracking-widest font-black">
+                    <p className="text-sm text-gray-400 uppercase tracking-widest font-black">
                       Images Attached ({imagePreviews.length})
                     </p>
                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
@@ -890,7 +890,7 @@ const ManageProducts = () => {
 
               {/* --- STANDARD INFO INPUTS --- */}
               <div className="space-y-1">
-                <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                   Product Name *
                 </label>
                 <input
@@ -899,13 +899,13 @@ const ManageProducts = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-xs rounded-none"
+                  className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-sm rounded-none"
                   placeholder="e.g., Luxury Silk Kaftan"
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                   Description
                 </label>
                 <textarea
@@ -913,7 +913,7 @@ const ManageProducts = () => {
                   name="description"
                   value={formData.description}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white resize-none text-gray-900 text-xs rounded-none"
+                  className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white resize-none text-gray-900 text-sm rounded-none"
                   placeholder="Write a short note about fabric quality..."
                 />
               </div>
@@ -921,14 +921,14 @@ const ManageProducts = () => {
               {/* Category Dropdowns */}
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <div className="space-y-1">
-                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                     Category Select *
                   </label>
                   <select
                     name="category"
                     value={formData.category}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white uppercase tracking-wider text-[10px] font-bold text-gray-900 rounded-none h-9"
+                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white uppercase tracking-wider text-sm font-bold text-gray-900 rounded-none h-9"
                   >
                     <option value="Full">Full</option>
                     <option value="Top">Top</option>
@@ -937,14 +937,14 @@ const ManageProducts = () => {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                     Sub-Category Select *
                   </label>
                   <select
                     name="subCategory"
                     value={formData.subCategory}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white uppercase tracking-wider text-[10px] font-bold text-gray-900 rounded-none h-9"
+                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white uppercase tracking-wider text-sm font-bold text-gray-900 rounded-none h-9"
                   >
                     <option value="Agbada">Agbada</option>
                     <option value="Kaftan">Kaftan</option>
@@ -959,7 +959,7 @@ const ManageProducts = () => {
               {/* Price & Inventory Stock */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-gray-50 mt-4 pt-3">
                 <div className="space-y-1">
-                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                     Price (₦) *
                   </label>
                   <input
@@ -968,7 +968,7 @@ const ManageProducts = () => {
                     name="price"
                     value={formData.price}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-xs rounded-none"
+                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-sm rounded-none"
                     placeholder="85000"
                   />
                 </div>
@@ -984,10 +984,10 @@ const ManageProducts = () => {
                       className="w-4 h-4 rounded-none border-gray-200 text-indigo-600 focus:ring-0 accent-indigo-600 cursor-pointer"
                     />
                     <div className="flex flex-col">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-gray-700 transition-colors group-hover:text-black">
+                      <span className="text-sm font-bold uppercase tracking-wider text-gray-700 transition-colors group-hover:text-black">
                         Mark as Best Seller
                       </span>
-                      <span className="text-[8px] text-gray-400 tracking-normal font-normal">
+                      <span className="text-sm text-gray-400 tracking-normal font-normal">
                         Feature this item prominently
                       </span>
                     </div>
@@ -998,9 +998,9 @@ const ManageProducts = () => {
               {/* Sizes and Colors */}
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <div className="space-y-1">
-                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                     Sizes{" "}
-                    <span className="text-[7px] text-gray-400 font-normal block sm:inline">
+                    <span className="text-sm text-gray-400 font-normal block sm:inline">
                       (Commas)
                     </span>
                   </label>
@@ -1009,14 +1009,14 @@ const ManageProducts = () => {
                     name="sizes"
                     value={formData.sizes}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-xs rounded-none"
+                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-sm rounded-none"
                     placeholder="S, M, L, XL"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-400">
                     Colors{" "}
-                    <span className="text-[7px] text-gray-400 font-normal block sm:inline">
+                    <span className="text-sm text-gray-400 font-normal block sm:inline">
                       (Commas)
                     </span>
                   </label>
@@ -1025,7 +1025,7 @@ const ManageProducts = () => {
                     name="colors"
                     value={formData.colors}
                     onChange={handleInputChange}
-                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-xs rounded-none"
+                    className="w-full border border-gray-200 p-2.5 outline-none focus:border-indigo-600 bg-white text-gray-900 text-sm rounded-none"
                     placeholder="Black, Gold"
                   />
                 </div>
@@ -1034,7 +1034,7 @@ const ManageProducts = () => {
               {/* Dynamic Variant Stocks Grid */}
               {variants.length > 0 && (
                 <div className="border border-gray-100 bg-gray-50/40 p-2.5 space-y-2 mt-2">
-                  <p className="text-[9px] text-gray-400 uppercase tracking-widest font-black">
+                  <p className="text-sm text-gray-400 uppercase tracking-widest font-black">
                     Configure Variant Stocks
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-36 overflow-y-auto pr-1">
@@ -1043,7 +1043,7 @@ const ManageProducts = () => {
                         key={index}
                         className="flex items-center justify-between border border-gray-100 bg-white p-2 shadow-sm"
                       >
-                        <span className="font-mono text-[9px] uppercase tracking-tighter text-gray-700">
+                        <span className="font-mono text-sm uppercase tracking-tighter text-gray-700">
                           {variant.size && variant.color
                             ? `${variant.size} - ${variant.color}`
                             : variant.size || variant.color}
@@ -1056,7 +1056,7 @@ const ManageProducts = () => {
                           onChange={(e) =>
                             handleVariantStockChange(index, e.target.value)
                           }
-                          className="border border-gray-200 p-1 w-20 text-right outline-none focus:border-indigo-600 bg-white text-xs"
+                          className="border border-gray-200 p-1 w-20 text-right outline-none focus:border-indigo-600 bg-white text-sm"
                         />
                       </div>
                     ))}
@@ -1073,7 +1073,7 @@ const ManageProducts = () => {
                     isSubmitting
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-indigo-600 hover:bg-black"
-                  } text-white px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all w-full text-center`}
+                  } text-white px-6 py-3 text-sm font-bold uppercase tracking-widest transition-all w-full text-center`}
                 >
                   {isSubmitting
                     ? "Processing Upload..."
@@ -1084,7 +1084,7 @@ const ManageProducts = () => {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="border border-gray-200 text-gray-500 font-bold uppercase tracking-widest px-4 py-3 text-[10px] hover:bg-gray-50 transition-all"
+                  className="border border-gray-200 text-gray-500 font-bold uppercase tracking-widest px-4 py-3 text-sm hover:bg-gray-50 transition-all"
                 >
                   Cancel
                 </button>

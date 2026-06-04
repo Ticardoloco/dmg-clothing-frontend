@@ -48,16 +48,16 @@ const logOut = useAuthStore((state) => state.logOut);
     <div className="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-md px-6 py-5 flex items-center justify-between font-medium border-b border-gray-100">
       {/* Logo */}
       <Link href="/">
-        <h2 className="font-bold text-2xl sm:text-3xl text-black font-prata">
+        <h2 className="font-bold text-3xl sm:text-4xl text-black font-prata">
           DMG
-          <span className="text-sm sm:text-base font-semibold text-indigo-600">
+          <span className="text-base sm:text-lg font-semibold text-indigo-600">
             Clothing
           </span>
         </h2>
       </Link>
 
       {/* Desktop Menu */}
-      <ul className="hidden sm:flex gap-5 text-sm uppercase tracking-widest text-gray-700">
+      <ul className="hidden sm:flex gap-5 text-base md:text-lg uppercase tracking-widest text-gray-700">
         <li
           className={`cursor-pointer ${pathname === "/" ? "border-b-2 border-indigo-600 text-indigo-600" : ""}`}
         >
@@ -80,7 +80,7 @@ const logOut = useAuthStore((state) => state.logOut);
               ].map((item) => (
                 <li
                   key={item}
-                  className="text-xs text-gray-800 hover:bg-gray-100 px-5 py-2 whitespace-nowrap"
+                  className="text-base md:text-lg text-gray-800 hover:bg-gray-100 px-5 py-2 whitespace-nowrap"
                 >
                   <Link href={`/shop/${item.toLowerCase().replace(" ", "-")}`}>
                     {item}
@@ -112,41 +112,41 @@ const logOut = useAuthStore((state) => state.logOut);
           height={20}
           src="/search.png"
           alt="search"
-          className="w-5 cursor-pointer opacity-80"
+          className="w-7 cursor-pointer opacity-80"
         />
         <div className="relative group hidden md:block">
           <Link href={token ? "/profile" : "/login"} className="">
             <Image
-              width={20}
-              height={20}
+              width={28}
+              height={28}
               src="/user.png"
               alt="user"
-              className="w-5 cursor-pointer opacity-80 "
+              className="w-7 cursor-pointer opacity-80 "
             />
           </Link>
 
           {token && (
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4 z-50">
               <div className="flex flex-col gap-2 w-40 py-3 px-5 bg-white shadow-xl text-gray-700 border-t-2 border-indigo-600">
-                <p className="text-xs font-bold text-indigo-600 truncate">
+                <p className="text-base md:text-lg font-bold text-indigo-600 truncate">
                   Hi, {user?.username || "User"}
                 </p>
                 <hr className="border-gray-100" />
                 <Link
                   href="/my-orders"
-                  className="cursor-pointer hover:text-indigo-600 text-xs transition-colors"
+                  className="cursor-pointer hover:text-indigo-600 text-base md:text-lg transition-colors"
                 >
                   My Orders
                 </Link>
                 <Link
                   href="/profile"
-                  className="cursor-pointer hover:text-indigo-600 text-xs transition-colors"
+                  className="cursor-pointer hover:text-indigo-600 text-base md:text-lg transition-colors"
                 >
                   My Profile
                 </Link>
                 <p
                   onClick={handleLogout}
-                  className="cursor-pointer hover:text-red-500 text-xs font-semibold transition-colors"
+                  className="cursor-pointer hover:text-red-500 text-base md:text-lg font-semibold transition-colors"
                 >
                   Logout
                 </p>
@@ -158,7 +158,7 @@ const logOut = useAuthStore((state) => state.logOut);
         <Link href="/cart" className="relative group">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 text-gray-800 group-hover:text-indigo-600 transition-colors"
+            className="w-9 h-9 text-gray-800 group-hover:text-indigo-600 transition-colors"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -171,7 +171,7 @@ const logOut = useAuthStore((state) => state.logOut);
             />
           </svg>
           {cart.length > 0 && (
-            <p className="absolute -right-1 -bottom-1 w-4 h-4 text-center leading-4 bg-indigo-600 text-white rounded-full text-[8px] font-bold">
+            <p className="absolute -right-1 -bottom-1 w-4 h-4 text-center leading-4 bg-indigo-600 text-white rounded-full text-[10px] font-bold">
               {totalItems}
             </p>
           )}
@@ -218,7 +218,7 @@ const logOut = useAuthStore((state) => state.logOut);
           <div className="flex flex-col h-full bg-white">
             <Link
               onClick={() => setVisible(false)}
-              className="py-5 px-6 border-b border-gray-50 text-sm font-bold uppercase"
+              className="py-5 px-6 border-b border-gray-50 text-base md:text-lg font-bold uppercase"
               href="/"
             >
               Home
@@ -228,7 +228,7 @@ const logOut = useAuthStore((state) => state.logOut);
             <div className="flex flex-col border-b border-gray-50">
               <div
                 onClick={() => setMobileShopOpen(!mobileShopOpen)}
-                className="py-5 px-6 flex justify-between items-center cursor-pointer text-sm font-bold uppercase"
+                className="py-5 px-6 flex justify-between items-center cursor-pointer text-base font-bold uppercase"
               >
                 <span onClick={() => setVisible(false)}>
                   <Link href="/shop">Shop</Link>
@@ -255,7 +255,7 @@ const logOut = useAuthStore((state) => state.logOut);
                   <Link
                     key={item}
                     onClick={() => setVisible(false)}
-                    className="block py-4 px-14 text-xs font-semibold uppercase text-gray-500 hover:text-indigo-600"
+                    className="block py-4 px-14 text-sm font-semibold uppercase text-gray-500 hover:text-indigo-600"
                     href={`/shop/${item.toLowerCase().replace(" ", "-")}`}
                   >
                     {item}
@@ -266,14 +266,14 @@ const logOut = useAuthStore((state) => state.logOut);
 
             <Link
               onClick={() => setVisible(false)}
-              className="py-5 px-6 border-b border-gray-50 text-sm font-bold uppercase"
+              className="py-5 px-6 border-b border-gray-50 text-base font-bold uppercase"
               href="/about"
             >
               About
             </Link>
             <Link
               onClick={() => setVisible(false)}
-              className="py-5 px-6 border-b border-gray-50 text-sm font-bold uppercase"
+              className="py-5 px-6 border-b border-gray-50 text-base font-bold uppercase"
               href="/contact"
             >
               Contact
@@ -284,14 +284,14 @@ const logOut = useAuthStore((state) => state.logOut);
               <>
                 <Link
                   onClick={() => setVisible(false)}
-                  className="py-5 px-6 border-b border-gray-50 text-sm font-bold uppercase text-gray-500"
+                  className="py-5 px-6 border-b border-gray-50 text-base font-bold uppercase text-gray-500"
                   href="/my-orders"
                 >
                   My Orders
                 </Link>
                 <Link
                   onClick={() => setVisible(false)}
-                  className="py-5 px-6 border-b border-gray-50 text-sm font-bold uppercase text-gray-500"
+                  className="py-5 px-6 border-b border-gray-50 text-base font-bold uppercase text-gray-500"
                   href="/profile"
                 >
                   My Profile
@@ -301,7 +301,7 @@ const logOut = useAuthStore((state) => state.logOut);
                     handleLogout();
                     setVisible(false);
                   }}
-                  className="py-8 px-6 text-sm font-bold uppercase text-red-500 cursor-pointer mt-auto border-t border-gray-100 bg-gray-50"
+                  className="py-8 px-6 text-base font-bold uppercase text-red-500 cursor-pointer mt-auto border-t border-gray-100 bg-gray-50"
                 >
                   Logout
                 </div>
@@ -309,7 +309,7 @@ const logOut = useAuthStore((state) => state.logOut);
             ) : (
               <Link
                 onClick={() => setVisible(false)}
-                className="py-5 px-6 border-b border-gray-50 text-sm font-bold uppercase bg-indigo-600 text-white"
+                className="py-5 px-6 border-b border-gray-50 text-base font-bold uppercase bg-indigo-600 text-white"
                 href="/login"
               >
                 Login

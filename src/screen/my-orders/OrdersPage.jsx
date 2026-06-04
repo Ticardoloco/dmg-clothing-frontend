@@ -72,7 +72,7 @@ const OrdersPage = () => {
         <h1 className="text-3xl font-bold font-prata uppercase leading-tight">
           My <span className="text-indigo-600 italic font-light">Orders</span>
         </h1>
-        <p className="text-[10px] font-bold text-gray-400 tracking-[0.3em] mt-2 uppercase">
+        <p className="text-base md:text-lg font-bold text-gray-400 tracking-[0.3em] mt-2 uppercase">
           Track your purchases and order history
         </p>
       </div>
@@ -84,7 +84,7 @@ const OrdersPage = () => {
           </p>
           <button
             onClick={() => router.push("/shop")}
-            className="bg-black text-white px-10 py-4 text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-600 transition-all"
+            className="bg-black text-white px-10 py-4 text-base md:text-lg font-bold uppercase tracking-widest hover:bg-indigo-600 transition-all"
           >
             Start Shopping
           </button>
@@ -98,46 +98,46 @@ const OrdersPage = () => {
             >
               {/* Order Header */}
               <div className="flex flex-col md:flex-row justify-between mb-8 pb-6 border-b border-gray-50 gap-4">
-                <div className="flex gap-8">
+                <div className="flex flex-wrap gap-4 md:gap-8">
                   <div>
-                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                    <p className="text-base md:text-lg font-bold text-gray-400 uppercase tracking-widest mb-1">
                       Order ID
                     </p>
-                    <p className="text-xs font-bold text-gray-900">
+                    <p className="text-base md:text-lg font-bold text-gray-900">
                       #{order._id.slice(-8).toUpperCase()}
                     </p>
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                    <p className="text-base md:text-lg font-bold text-gray-400 uppercase tracking-widest mb-1">
                       Date
                     </p>
-                    <p className="text-xs font-bold text-gray-900">
+                    <p className="text-base md:text-lg font-bold text-gray-900">
                       {new Date(order.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                    <p className="text-base md:text-lg font-bold text-gray-400 uppercase tracking-widest mb-1">
                       Total
                     </p>
-                    <p className="text-xs font-bold text-indigo-600">
+                    <p className="text-base md:text-lg font-bold text-indigo-600">
                       ₦{order.totalAmount.toLocaleString()}
                     </p>
                   </div>
                   {/* Added Payment Method */}
                   <div>
-                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                    <p className="text-base md:text-lg font-bold text-gray-400 uppercase tracking-widest mb-1">
                       Method
                     </p>
-                    <p className="text-xs font-bold text-gray-900 uppercase">
+                    <p className="text-base md:text-lg font-bold text-gray-900 uppercase">
                       {order.paymentMethod || "COD"}
                     </p>
                   </div>
                   {/* Added Payment Status */}
                   <div>
-                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-1">
+                    <p className="text-base md:text-lg font-bold text-gray-400 uppercase tracking-widest mb-1">
                       Payment
                     </p>
-                    <p className="text-xs font-bold text-gray-900 uppercase">
+                    <p className="text-base md:text-lg font-bold text-gray-900 uppercase">
                       {order.paymentStatus || "Pending"}
                     </p>
                   </div>
@@ -146,7 +146,7 @@ const OrdersPage = () => {
                   <span
                     className={`w-2 h-2 rounded-full ${order.status === "delivered" ? "bg-green-500" : order.status === "shipped" ? "bg-blue-500" : order.status === "cancelled" ? "bg-red-500" : "bg-orange-400"}`}
                   ></span>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-gray-700">
+                  <p className="text-base md:text-lg font-bold uppercase tracking-widest text-gray-700">
                     {order.status}
                   </p>
                 </div>
@@ -169,20 +169,20 @@ const OrdersPage = () => {
                         />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold uppercase tracking-wide text-gray-900">
+                        <h4 className="text-base md:text-lg font-bold uppercase tracking-wide text-gray-900">
                           {item.product.name}
                         </h4>
-                        <p className="text-[10px] text-gray-400 mt-1">
+                        <p className="text-base md:text-lg text-gray-400 mt-1">
                           Size: {item.size} | Qty: {item.quantity}{" "}
                         </p>
                         {item.color ? (
-                          <p className="text-[10px] text-gray-400 mt-1">
+                          <p className="text-base md:text-lg text-gray-400 mt-1">
                             Color: {item.color}
                           </p>
                         ) : null}
                       </div>
                     </div>
-                    <p className="text-xs font-bold text-gray-900">
+                    <p className="text-base md:text-lg font-bold text-gray-900">
                       ₦{item.price.toLocaleString()}
                     </p>
                   </div>
@@ -221,7 +221,7 @@ const OrdersPage = () => {
             <button
               key={index}
               onClick={() => setCurrentPage(index + 1)}
-              className={`w-10 h-10 border text-sm font-semibold transition ${
+              className={`w-10 h-10 border text-base md:text-lg font-semibold transition ${
                 currentPage === index + 1
                   ? "bg-indigo-600 text-white border-indigo-600"
                   : "bg-white border-gray-200 hover:border-indigo-500"

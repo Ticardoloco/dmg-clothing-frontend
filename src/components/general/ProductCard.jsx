@@ -26,10 +26,10 @@ const ProductCard = ({id, name, image, subCategory, price}) => {
                 <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-widest mb-1">
                   {subCategory}
                 </p>
-                <h3 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">
                   {name}
                 </h3>
-                <p className="text-gray-900 font-bold text-sm">
+                <p className="text-gray-900 font-bold text-base md:text-lg">
                   ₦{price.toLocaleString()}
                 </p>
               </div>

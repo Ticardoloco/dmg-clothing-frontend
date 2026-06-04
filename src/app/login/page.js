@@ -87,7 +87,7 @@ const LoginPage = () => {
    
         <input
          placeholder='Email'
-          className='w-full px-3 py-2 border border-gray-800 '
+          className='w-full px-3 text-base md:text-lg py-2 border border-gray-800 '
            {...register("email", { 
             required: "Email Address is required",
              pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -99,7 +99,7 @@ const LoginPage = () => {
         <div className="relative w-full">
             <input type={showPassword ? "text" : "password"}
          placeholder='Password'
-        className='w-full px-3 py-2 border border-gray-800 '
+        className='w-full text-base md:text-lg px-3 py-2 border border-gray-800 '
         {...register("password", {
         required: "Password is required",
         minLength: {
@@ -117,7 +117,7 @@ const LoginPage = () => {
       />
        <span
     onClick={() => setShowPassword(!showPassword)}
-    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-gray-600"
+    className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-base md:text-lg text-gray-600"
   >
     {showPassword ? "Hide" : "Show"}
   </span>
@@ -129,13 +129,13 @@ const LoginPage = () => {
 )}
         
 
-        <div className="w-full flex justify-between text-sm -mt-2">
+        <div className="w-full flex justify-between text-base md:text-lg -mt-2">
           <p><Link href="/">Forgot your password?</Link></p>
           <p><Link href="/signup">Create account</Link></p>
           
         </div>
 
-        <input  type="submit" disabled={loading} value={loading? "Loging In...": "Login"} className='bg-black text-white font-light px-8 py-2 mt-4 cursor-pointer'/>
+        <input  type="submit" disabled={loading} value={loading? "Loging In...": "Login"} className='bg-black text-white font-light px-8 py-2 mt-4 text-base md:text-lg cursor-pointer'/>
       </form>
     </div>
   )

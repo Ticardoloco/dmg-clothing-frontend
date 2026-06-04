@@ -67,7 +67,7 @@ const VintagePage = () => {
             <h1 className='text-4xl md:text-6xl font-bold font-prata text-gray-900 uppercase leading-tight'>
                 The <span className='text-indigo-600 italic font-light'>Vintage</span> Series
             </h1>
-            <p className='text-gray-500 mt-4 text-sm md:text-base leading-relaxed'>
+            <p className='text-gray-500 mt-4 text-base md:text-lg leading-relaxed'>
                 A curated selection of prints and patterns that transcend time. From 70s silk collars to 90s oversized silhouettes, our Vintage collection brings character and soul back to your wardrobe.
             </p>
         </div>

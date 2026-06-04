@@ -66,7 +66,7 @@ const CargoPage = () => {
             <h1 className='text-4xl md:text-6xl font-bold font-prata text-gray-900 uppercase leading-tight'>
                 The <span className='text-indigo-600 italic font-light'>Cargo</span> Series
             </h1>
-            <p className='text-gray-500 mt-4 text-sm md:text-base leading-relaxed'>
+            <p className='text-gray-500 mt-4 text-base md:text-lg leading-relaxed'>
                 Form meets function. Our cargo series redefines utility with tailored fits and reinforced construction. Whether you&apos;re navigating the city or the outdoors, do it with effortless style and total capability.
             </p>
         </div>

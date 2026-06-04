@@ -92,11 +92,11 @@ const ContactPage = () => {
               <h2 className="text-xl font-bold font-prata text-gray-800 uppercase tracking-widest">
                 Our Store
               </h2>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-base md:text-lg">
                 37 Oluarikawe Street, Off Ijagemo Road, Afrugbin B/S <br />
                 Ijegun, Ikotun Lagos, Nigeria
               </p>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-base md:text-lg">
                 Tel: +234-903-297-0254 <br />
                 Email: admin@dmgclothing.com
               </p>
@@ -104,7 +104,9 @@ const ContactPage = () => {
               <h2 className="text-xl font-bold font-prata text-gray-800 uppercase tracking-widest mt-4">
                 Careers at DMG
               </h2>
-              <p>Learn more about our teams and job openings.</p>
+              <p className="text-base md:text-lg">
+                Learn more about our teams and job openings.
+              </p>
 
               <Link href="https://wa.me/2349032970254" target="_blank" className="w-fit border border-black px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300">
                 message us on whatsapp
@@ -113,14 +115,14 @@ const ContactPage = () => {
           </div>
 
           {/* --- CONTACT FORM SIDE --- */}
-          <div className="w-full md:w-1/2 bg-gray-50 p-8 md:p-12">
+          <div className="w-full md:h-160 md:w-1/2 bg-gray-50 p-8 md:p-12">
             <h2 className="text-2xl font-bold font-prata text-gray-900 mb-8 uppercase">
               Send us a message
             </h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                <label className="text-base md:text-lg font-bold uppercase tracking-widest text-gray-500">
                   Full Name
                 </label>
                 <input
@@ -130,12 +132,12 @@ const ContactPage = () => {
                   onChange={handleChange}
                   name="fullName"
                   required
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-indigo-600 transition-colors"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-base md:text-lg focus:outline-none focus:border-indigo-600 transition-colors"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                <label className="text-base md:text-lg font-bold uppercase tracking-widest text-gray-500">
                   Email Address
                 </label>
                 <input
@@ -145,12 +147,12 @@ const ContactPage = () => {
                   onChange={handleChange}
                   name="email"
                   required
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-indigo-600 transition-colors"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-base md:text-lg focus:outline-none focus:border-indigo-600 transition-colors"
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-gray-500">
+                <label className="text-base md:text-lg font-bold uppercase tracking-widest text-gray-500">
                   Message
                 </label>
                 <textarea
@@ -160,14 +162,14 @@ const ContactPage = () => {
                   onChange={handleChange}
                   name="message"
                   required
-                  className="w-full border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-indigo-600 transition-colors resize-none"
+                  className="w-full border border-gray-200 bg-white px-4 py-3 text-base md:text-lg focus:outline-none focus:border-indigo-600 transition-colors resize-none"
                 ></textarea>
               </div>
 
               <button
               type="submit"
               disabled={loading}
-              className="bg-black text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-indigo-600 transition-colors shadow-lg cursor-pointer">
+              className="bg-black text-white px-10 py-4 text-base md:text-lg font-bold uppercase tracking-widest hover:bg-indigo-600 transition-colors shadow-lg cursor-pointer">
                  {loading ? "Sending..." : "Send Message"}
               </button>
             </form>

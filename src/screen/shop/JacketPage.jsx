@@ -64,7 +64,7 @@ const JacketPage = () => {
             <h1 className='text-4xl md:text-6xl font-bold font-prata text-gray-900 uppercase leading-tight'>
                 The <span className='text-indigo-600 italic font-light'>Jacket</span> Series
             </h1>
-            <p className='text-gray-500 mt-4 text-sm md:text-base leading-relaxed'>
+            <p className='text-gray-500 mt-4 text-base md:text-lg leading-relaxed'>
                 Structured for the modern silhouette. From ceremonial vests that honor tradition to utility outerwear for the urban landscape, our jackets are designed to be the defining layer of your attire.
             </p>
         </div>

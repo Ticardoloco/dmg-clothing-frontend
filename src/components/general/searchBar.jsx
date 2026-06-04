@@ -22,7 +22,7 @@ const SearchBar = () => {
           <input 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className='flex-1 outline-none bg-transparent text-base  tracking-tight placeholder:text-gray-200 py-4' 
+            className='flex-1 outline-none bg-transparent text-base md:text-lg  tracking-tight placeholder:text-gray-200 py-4' 
             type="text" 
             placeholder='Search our collection...' 
             autoFocus

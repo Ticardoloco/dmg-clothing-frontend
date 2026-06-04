@@ -552,7 +552,7 @@ const PlaceOrder = () => {
               value={shipping.firstName}
               onChange={handleChange}
               placeholder="First name"
-              className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
             />
 
             <input
@@ -561,7 +561,7 @@ const PlaceOrder = () => {
               value={shipping.lastName}
               onChange={handleChange}
               placeholder="Last name"
-              className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
             />
           </div>
 
@@ -571,7 +571,7 @@ const PlaceOrder = () => {
             value={shipping.email}
             onChange={handleChange}
             placeholder="Email address"
-            className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
           />
 
           <input
@@ -580,7 +580,7 @@ const PlaceOrder = () => {
             value={shipping.street}
             onChange={handleChange}
             placeholder="Street"
-            className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
           />
 
           <div className="grid grid-cols-2 gap-4">
@@ -590,7 +590,7 @@ const PlaceOrder = () => {
               value={shipping.city}
               onChange={handleChange}
               placeholder="City"
-              className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
             />
 
             <input
@@ -599,7 +599,7 @@ const PlaceOrder = () => {
               value={shipping.state}
               onChange={handleChange}
               placeholder="State"
-              className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
             />
           </div>
 
@@ -610,7 +610,7 @@ const PlaceOrder = () => {
               value={shipping.zipcode}
               onChange={handleChange}
               placeholder="Zipcode"
-              className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
             />
 
             <input
@@ -619,7 +619,7 @@ const PlaceOrder = () => {
               value={shipping.country}
               onChange={handleChange}
               placeholder="Country"
-              className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+              className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
             />
           </div>
 
@@ -629,7 +629,7 @@ const PlaceOrder = () => {
             value={shipping.phone}
             onChange={handleChange}
             placeholder="Phone"
-            className="border border-gray-200 px-4 py-3 text-sm outline-none focus:border-indigo-600 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base md:text-lg outline-none focus:border-indigo-600 transition-all"
           />
         </div>
 
@@ -641,7 +641,7 @@ const PlaceOrder = () => {
               Cart Totals
             </h2>
 
-            <div className="flex flex-col gap-3 text-sm">
+            <div className="flex flex-col gap-3 text-base md:text-lg">
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal</span>
                 <span>₦{mounted ? getTotal().toLocaleString() : 0}</span>
@@ -665,7 +665,7 @@ const PlaceOrder = () => {
 
           {/* PAYMENT */}
           <div className="mt-12">
-            <h2 className="text-sm font-bold uppercase tracking-widest mb-6">
+            <h2 className="text-base md:text-lg font-bold uppercase tracking-widest mb-6">
               Payment Method
             </h2>
 
@@ -687,7 +687,7 @@ const PlaceOrder = () => {
                   }`}
                 ></div>
 
-                <span className="text-xs font-bold uppercase text-gray-600 tracking-wider">
+                <span className="text-sm md:text-base font-bold uppercase text-gray-600 tracking-wider">
                   Paystack (Card)
                 </span>
               </div>
@@ -709,7 +709,7 @@ const PlaceOrder = () => {
                   }`}
                 ></div>
 
-                <span className="text-xs font-bold uppercase text-gray-600 tracking-wider">
+                <span className="text-sm md:text-base font-bold uppercase text-gray-600 tracking-wider">
                   Razorpay
                 </span>
               </div>
@@ -731,7 +731,7 @@ const PlaceOrder = () => {
                   }`}
                 ></div>
 
-                <span className="text-xs font-bold uppercase text-gray-600 tracking-wider">
+                <span className="text-sm md:text-base font-bold uppercase text-gray-600 tracking-wider">
                   Cash on Delivery
                 </span>
               </div>
@@ -740,7 +740,7 @@ const PlaceOrder = () => {
             <button
               disabled={loading}
               onClick={placeOrder}
-              className="w-full bg-black text-white py-4 mt-10 text-xs font-bold uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-black text-white py-4 mt-10 text-sm md:text-base font-bold uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Processing..." : "Place Order"}
             </button>

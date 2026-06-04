@@ -22,7 +22,7 @@ const Footer = () => {
                 DMG<span className="text-base font-semibold text-indigo-600">Clothing</span>
               </h2>
             </Link>
-            <p className="text-gray-500 text-sm leading-relaxed mb-8 max-w-sm">
+            <p className="text-gray-500 text-base md:text-lg leading-relaxed mb-8 max-w-sm">
               Crafting premium traditional and contemporary attire for the modern individual. Quality, heritage, and style in every stitch.
             </p>
             
@@ -35,8 +35,8 @@ const Footer = () => {
             
             {/* Column 1 */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-900 mb-6">Company</h4>
-              <ul className="flex flex-col gap-4 text-sm text-gray-500">
+              <h4 className="text-base md:text-lg font-bold uppercase tracking-[0.2em] text-gray-900 mb-6">Company</h4>
+              <ul className="flex flex-col gap-4 text-base md:text-lg text-gray-500">
                 <li className="hover:text-indigo-600 transition-colors"><Link href="/">Home</Link></li>
                 <li className="hover:text-indigo-600 transition-colors"><Link href="/about">About us</Link></li>
                 <li className="hover:text-indigo-600 transition-colors"><Link href="/contact">Delivery</Link></li>
@@ -46,8 +46,8 @@ const Footer = () => {
 
             {/* Column 2 */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-900 mb-6">Shop</h4>
-              <ul className="flex flex-col gap-4 text-sm text-gray-500">
+              <h4 className="text-base md:text-lg font-bold uppercase tracking-[0.2em] text-gray-900 mb-6">Shop</h4>
+              <ul className="flex flex-col gap-4 text-base md:text-lg text-gray-500">
                 <li className="hover:text-indigo-600 transition-colors"><Link href="/shop/agbada">Agbada</Link></li>
                 <li className="hover:text-indigo-600 transition-colors"><Link href="/shop/jalabiya">Jalabiya</Link></li>
                 <li className="hover:text-indigo-600 transition-colors"><Link href="/shop/vintage">Vintage</Link></li>
@@ -57,8 +57,8 @@ const Footer = () => {
 
             {/* Column 3 */}
             <div>
-              <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-900 mb-6">Get in Touch</h4>
-              <ul className="flex flex-col gap-4 text-sm text-gray-500">
+              <h4 className="text-base md:text-lg font-bold uppercase tracking-[0.2em] text-gray-900 mb-6">Get in Touch</h4>
+              <ul className="flex flex-col gap-4 text-base md:text-lg text-gray-500">
                 <li>+234-903-297-0254</li>
                 <li>contact@dmgclothing.com</li>
                 <li className="pt-2 flex gap-4">

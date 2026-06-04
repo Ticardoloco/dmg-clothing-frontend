@@ -165,7 +165,7 @@ const MailingListControl = () => {
             Mailing{" "}
             <span className="text-indigo-600 italic font-light">List</span>
           </h1>
-          <p className="text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
+          <p className="text-sm font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
             Monitor newsletter signups, export data, and manage client
             subscriptions
           </p>
@@ -183,7 +183,7 @@ const MailingListControl = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="border border-gray-200 px-3 text-[10px] font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 transition-all cursor-pointer"
+            className="border border-gray-200 px-3 text-sm font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 transition-all cursor-pointer"
           >
             <option value="all">All Statuses</option>
             <option value="active">Active Only</option>
@@ -195,7 +195,7 @@ const MailingListControl = () => {
             placeholder="Search by email address..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-200 px-4 py-3 text-base sm:text-[10px] font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base sm:text-sm font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
           />
         </div>
       </div>
@@ -216,13 +216,13 @@ const MailingListControl = () => {
                 className="border border-gray-100 bg-white shadow-sm hover:border-gray-200 transition-all overflow-hidden"
               >
                 {/* Meta Header Information Strip */}
-                <div className="bg-gray-50/70 px-4 py-2.5 border-b border-gray-100 flex flex-wrap items-center justify-between gap-4 text-xs">
+                <div className="bg-gray-50/70 px-4 py-2.5 border-b border-gray-100 flex flex-wrap items-center justify-between gap-4 text-sm">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                     <span className="font-mono text-gray-400 font-bold uppercase">
                       ID: {sub._id}
                     </span>
                     <span className="text-gray-300 hidden sm:inline">|</span>
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 font-medium text-sm md:text-base">
                       Joined:{" "}
                       {sub.createdAt
                         ? new Date(sub.createdAt).toLocaleDateString()
@@ -244,7 +244,7 @@ const MailingListControl = () => {
                         onChange={(e) =>
                           handleStatusChange(sub._id, e.target.value)
                         }
-                        className="bg-transparent border-none text-[9px] font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
+                        className="bg-transparent border-none text-sm font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
                       >
                         <option
                           value="active"
@@ -298,11 +298,11 @@ const MailingListControl = () => {
                 <div className="p-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 text-xs">
                   {/* Email block and click-to-copy trigger */}
                   <div className="space-y-0.5">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block">
                       Subscriber Target Address
                     </span>
                     <div className="flex items-center gap-2 group">
-                      <span className="font-mono text-gray-900 text-sm font-medium tracking-tight break-all">
+                      <span className="font-mono text-gray-900 text-sm md:text-base font-medium tracking-tight break-all">
                         {sub.email}
                       </span>
                       <button
@@ -337,10 +337,10 @@ const MailingListControl = () => {
                   {/* Context Metrics side block */}
                   <div className="flex items-center gap-8 sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-50">
                     <div>
-                      <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-0.5">
+                      <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-0.5">
                         Source
                       </span>
-                      <p className="text-gray-600 font-medium capitalize text-[11px]">
+                      <p className="text-gray-600 font-medium capitalize text-sm">
                         {sub.source || "Footer Form"}
                       </p>
                     </div>

@@ -14,7 +14,7 @@ const Hero = () => {
           {/* Left Content: Text & CTA */}
           <div className="w-full lg:w-1/2 space-y-8 z-10 mt-10 lg:mt-0">
             <div className="space-y-4 flex flex-col items-center lg:block text-center lg:text-start">
-              <h2 className=" text-sm font-bold tracking-widest text-indigo-600 uppercase">
+              <h2 className=" text-base font-bold tracking-widest text-indigo-600 uppercase">
                 New Arrivals 2026
               </h2>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
@@ -47,11 +47,11 @@ const Hero = () => {
             <div className="pt-8 flex justify-center text-center lg:text-start lg:justify-items-normal gap-8 border-t border-gray-100">
               <div>
                 <p className="text-2xl font-bold text-gray-900">50k+</p>
-                <p className="text-sm text-gray-500">Happy Customers</p>
+                <p className="text-base md:text-lg lg:text-xl text-gray-500">Happy Customers</p>
               </div>
               <div>
                 <p className="text-2xl font-bold text-gray-900">100+</p>
-                <p className="text-sm text-gray-500">Premium Styles</p>
+                <p className="text-base md:text-lg lg:text-xl text-gray-500">Premium Styles</p>
               </div>
             </div>
           </div>

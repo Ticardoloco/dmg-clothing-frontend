@@ -208,7 +208,7 @@ const ProfilePage = () => {
               {formData.username || "Member"}{" "}
               <span className="text-indigo-600 italic font-light">Profile</span>
             </h1>
-            <p className="text-xs font-bold text-gray-400 tracking-widest mt-1">
+            <p className="text-sm md:text-base font-bold text-gray-400 tracking-widest mt-1">
               {formData.email}
             </p>
           </div>
@@ -219,14 +219,14 @@ const ProfilePage = () => {
             <>
               <button
                 onClick={() => setIsEditing(false)}
-                className="px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-red-500"
+                className="px-6 py-3 text-sm md:text-base font-bold uppercase tracking-widest text-gray-400 hover:text-red-500"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpdateProfile}
                 disabled={loading}
-                className="bg-indigo-600 text-white px-8 py-3 text-[10px] font-bold uppercase tracking-widest shadow-lg hover:bg-black transition-all"
+                className="bg-indigo-600 text-white px-8 py-3 text-sm md:text-base font-bold uppercase tracking-widest shadow-lg hover:bg-black transition-all"
               >
                 {loading ? "Updating..." : "Save Changes"}
               </button>
@@ -234,7 +234,7 @@ const ProfilePage = () => {
           ) : (
             <button
               onClick={() => setIsEditing(true)}
-              className="border border-gray-900 px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-all"
+              className="border border-gray-900 px-8 py-3 text-sm md:text-base font-bold uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-all"
             >
               Edit Profile
             </button>
@@ -245,12 +245,12 @@ const ProfilePage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
         {/* --- BASIC INFO SECTION --- */}
         <div className="space-y-10">
-          <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300">
+          <h3 className="text-base md:text-lg font-bold uppercase tracking-[0.4em] text-gray-300">
             Account Credentials
           </h3>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            <label className="text-sm md:text-base font-bold uppercase tracking-widest text-gray-500">
               Username
             </label>
             <input
@@ -258,12 +258,12 @@ const ProfilePage = () => {
               value={formData.username}
               onChange={handleChange}
               disabled={!isEditing}
-              className={`py-3 border-b outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
+              className={`py-3 border-b text-base md:text-lg outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            <label className="text-sm md:text-base font-bold uppercase tracking-widest text-gray-500">
               Phone Number
             </label>
             <input
@@ -271,19 +271,19 @@ const ProfilePage = () => {
               value={formData.phone}
               onChange={handleChange}
               disabled={!isEditing}
-              className={`py-3 border-b outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
+              className={`py-3 border-b text-base md:text-lg outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
             />
           </div>
         </div>
 
         {/* --- ADDRESS SECTION --- */}
         <div className="space-y-10">
-          <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-300">
+          <h3 className="text-base md:text-lg font-bold uppercase tracking-[0.4em] text-gray-300">
             Shipping Details
           </h3>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            <label className="text-sm md:text-base font-bold uppercase tracking-widest text-gray-500">
               Street Address
             </label>
             <input
@@ -291,13 +291,13 @@ const ProfilePage = () => {
               value={formData.address.street}
               onChange={handleAddressChange}
               disabled={!isEditing}
-              className={`py-3 border-b outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
+              className={`py-3 border-b text-base md:text-lg outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
             />
           </div>
 
           <div className="grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+              <label className="text-sm md:text-base font-bold uppercase tracking-widest text-gray-500">
                 City
               </label>
               <input
@@ -305,11 +305,11 @@ const ProfilePage = () => {
                 value={formData.address.city}
                 onChange={handleAddressChange}
                 disabled={!isEditing}
-                className={`py-3 border-b outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
+                className={`py-3 border-b text-base md:text-lg outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+              <label className="text-sm md:text-base font-bold uppercase tracking-widest text-gray-500">
                 State
               </label>
               <input
@@ -317,13 +317,13 @@ const ProfilePage = () => {
                 value={formData.address.state}
                 onChange={handleAddressChange}
                 disabled={!isEditing}
-                className={`py-3 border-b outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
+                className={`py-3 border-b text-base md:text-lg outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+            <label className="text-sm md:text-base font-bold uppercase tracking-widest text-gray-500">
               Country
             </label>
             <input
@@ -331,7 +331,7 @@ const ProfilePage = () => {
               value={formData.address.country}
               onChange={handleAddressChange}
               disabled={!isEditing}
-              className={`py-3 border-b outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
+              className={`py-3 border-b text-base md:text-lg outline-none transition-all ${isEditing ? "border-indigo-600 text-gray-900" : "border-gray-100 text-gray-400"}`}
             />
           </div>
         </div>

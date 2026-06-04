@@ -127,10 +127,10 @@ const ShopPage = () => {
         <div
           className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? "" : "hidden"} sm:block`}
         >
-          <p className="mb-3 text-sm font-bold uppercase tracking-widest">
+          <p className="mb-3 text-base sm:text-lg font-bold uppercase tracking-widest">
             Categories
           </p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
+          <div className="flex flex-col gap-2 text-base md:text-lg font-light text-gray-700">
             {["Top", "Bottom", "Full"].map((item) => (
               <p key={item} className="flex gap-2 items-center">
                 <input
@@ -149,10 +149,10 @@ const ShopPage = () => {
         <div
           className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? "" : "hidden"} sm:block`}
         >
-          <p className="mb-3 text-sm font-bold uppercase tracking-widest">
+          <p className="mb-3 text-base sm:text-lg font-bold uppercase tracking-widest">
             Type
           </p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
+          <div className="flex flex-col gap-2 text-base md:text-lg font-light text-gray-700">
             {[
               "Agbada",
               "Kaftan",
@@ -188,7 +188,7 @@ const ShopPage = () => {
           {/* Product Sort */}
           <select
             onChange={(e) => setSortType(e.target.value)}
-            className="border-2 border-gray-300 text-sm px-2 py-2 rounded-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
+            className="border-2 border-gray-300 text-base md:text-lg px-2 py-2 rounded-sm focus:outline-none focus:border-indigo-600 cursor-pointer"
           >
             <option value="relevant">Sort by: Relevant</option>
             <option value="low-high">Sort by: Low to High</option>
@@ -219,7 +219,7 @@ const ShopPage = () => {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 border border-gray-300 text-sm disabled:opacity-50 hover:border-indigo-600"
+              className="px-4 py-2 border border-gray-300 text-base md:text-lg disabled:opacity-50 hover:border-indigo-600"
             >
               Prev
             </button>
@@ -228,7 +228,7 @@ const ShopPage = () => {
               <button
                 key={index + 1}
                 onClick={() => setCurrentPage(index + 1)}
-                className={`w-10 h-10 border text-sm transition-all ${
+                className={`w-10 h-10 border text-base md:text-lg transition-all ${
                   currentPage === index + 1
                     ? "bg-indigo-600 text-white border-indigo-600"
                     : "border-gray-300 hover:border-indigo-600"
@@ -243,7 +243,7 @@ const ShopPage = () => {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="px-4 py-2 border border-gray-300 text-sm disabled:opacity-50 hover:border-indigo-600"
+              className="px-4 py-2 border border-gray-300 text-base md:text-lg disabled:opacity-50 hover:border-indigo-600"
             >
               Next
             </button>

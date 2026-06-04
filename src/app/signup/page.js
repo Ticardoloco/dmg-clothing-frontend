@@ -84,7 +84,7 @@ const SignUpPage = () => {
     <input
       type="text"
       placeholder="Username"
-      className="w-full px-3 py-2 border border-gray-800"
+      className="w-full px-3 py-2 text-base md:text-lg border border-gray-800"
       {...register("username", {
         required: "Username is required",
         maxLength: {
@@ -107,7 +107,7 @@ const SignUpPage = () => {
  
         <input
          placeholder='Email'
-          className='w-full px-3 py-2 border border-gray-800 '
+          className='w-full px-3 text-base md:text-lg py-2 border border-gray-800 '
            {...register("email", { 
             required: "Email Address is required",
              pattern: {value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -119,7 +119,7 @@ const SignUpPage = () => {
         <div className="w-full relative">
           <input type={showPassword ? "text" : "password"}
          placeholder='Password'
-        className='w-full px-3 py-2 border border-gray-800 '
+        className='w-full px-3 py-2 text-base md:text-lg border border-gray-800 '
         {...register("password", {
         required: "Password is required",
         minLength: {
@@ -136,7 +136,7 @@ const SignUpPage = () => {
       aria-invalid={errors.password ? "true" : "false"}
       />
 
-      <span onClick={()=> setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-sm text-gray-600">
+      <span onClick={()=> setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-base md:text-lg text-gray-600">
         {showPassword ? "Hide" : "Show"}
       </span>
         </div>
@@ -147,13 +147,13 @@ const SignUpPage = () => {
 )}
         
 
-        <div className="w-full flex justify-between text-sm -mt-2">
+        <div className="w-full flex justify-between text-base md:text-lg -mt-2">
           <p><Link href="/">Forgot your password?</Link></p>
           <p><Link href="/login">Login here</Link></p>
           
         </div>
 
-        <input type="submit" disabled={loading} value={loading ? "Signing Up..." : "Sign Up"} className='bg-black text-white font-light px-8 py-2 mt-4 cursor-pointer'/>
+        <input type="submit" disabled={loading} value={loading ? "Signing Up..." : "Sign Up"} className='bg-black text-base text-white font-light px-8 py-2 mt-4 cursor-pointer'/>
       </form>
     </div>
   )

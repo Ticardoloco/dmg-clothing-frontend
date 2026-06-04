@@ -70,7 +70,7 @@ const AgbadaPage = () => {
             <h1 className='text-4xl md:text-6xl font-bold font-prata text-gray-900 uppercase leading-tight'>
                 The <span className='text-indigo-600 italic font-light'>Agbada</span> Series
             </h1>
-            <p className='text-gray-500 mt-4 text-sm md:text-base leading-relaxed'>
+            <p className='text-gray-500 mt-4 text-base md:text-lg leading-relaxed'>
                 The pinnacle of African prestige. Our Agbada collection combines voluminous traditional silhouettes with modern embroidery techniques, designed for the man who commands respect in every room.
             </p>
         </div>

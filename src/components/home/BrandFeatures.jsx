@@ -42,7 +42,7 @@ const BrandFeatures = () => {
         
         {/* Optional: Add a title for consistency with other homepage sections */}
         <div className="text-center mb-8 md:mb-16">
-          <h2 className="text-sm font-semibold text-indigo-600 uppercase tracking-widest mb-2">Our Promise</h2>
+          <h2 className="text-base md:text-lg font-semibold text-indigo-600 uppercase tracking-widest mb-2">Our Promise</h2>
           <p className="text-4xl md:text-5xl font-bold font-prata text-gray-900 uppercase tracking-tight">
             The DMG <span className="text-indigo-600 italic font-light">Guarantee</span>
           </p>
@@ -61,12 +61,12 @@ const BrandFeatures = () => {
               </div>
 
               {/* Title using consistent bold styling */}
-              <h3 className="text-base font-bold text-gray-900 uppercase tracking-widest mb-3">
+              <h3 className="text-base md:text-lg font-bold text-gray-900 uppercase tracking-widest mb-3">
                 {feature.title}
               </h3>
 
               {/* Description (Lightened text, like your image) */}
-              <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+              <p className="text-gray-500 text-base  leading-relaxed max-w-xs">
                 {feature.description}
               </p>
             </div>

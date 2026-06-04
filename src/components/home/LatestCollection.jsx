@@ -29,7 +29,7 @@ const LatestCollection = () => {
             Latest <span className="text-indigo-600 italic font-light">Collection</span>
           </h2>
           <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
-          <p className="text-gray-500 max-w-lg mx-auto text-sm md:text-base tracking-wide uppercase">
+          <p className="text-gray-500 max-w-lg mx-auto text-base md:text-lg  uppercase">
             Discover our newest arrivals, blending heritage craftsmanship with contemporary style.
           </p>
         </div>
@@ -49,7 +49,7 @@ const LatestCollection = () => {
         <div className="mt-20 text-center">
           <Link 
             href="/shop" 
-            className="inline-block px-12 py-4 border border-black text-black font-bold text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300"
+            className="inline-block px-12 py-4 border border-black text-black font-bold text-sm md:text-base uppercase tracking-widest hover:bg-black hover:text-white transition-all duration-300"
           >
             View Entire Shop
           </Link>

@@ -121,7 +121,7 @@ const ContactMessages = () => {
             Inbound{" "}
             <span className="text-indigo-600 italic font-light">Messages</span>
           </h1>
-          <p className="text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
+          <p className="text-sm font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
             Review and respond to client inquiries and contact forms
           </p>
         </div>
@@ -132,7 +132,7 @@ const ContactMessages = () => {
             placeholder="Search by Keyword, Email, Name..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-200 px-4 py-3 text-base sm:text-[10px] font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base sm:text-sm font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
           />
         </div>
       </div>
@@ -164,7 +164,7 @@ const ContactMessages = () => {
                       {msg._id}
                     </span>
                     <span className="text-gray-300 hidden sm:inline">|</span>
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 font-medium text-sm md:text-base">
                       Received:{" "}
                       {msg.createdAt
                         ? new Date(msg.createdAt).toLocaleString()
@@ -212,16 +212,16 @@ const ContactMessages = () => {
                 </div>
 
                 {/* Primary Content Grid */}
-                <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-xs items-start">
+                <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-sm items-start">
                   {/* Column 1: Sender Identification */}
                   <div className="space-y-1 border-b md:border-b-0 md:border-r border-gray-100 pb-4 md:pb-0 md:pr-2">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Sender Details
                     </span>
-                    <h4 className="font-bold text-gray-900 text-sm capitalize">
+                    <h4 className="font-bold text-gray-900 text-sm md:text-base capitalize">
                       {msg.fullName || "Anonymous Sender"}
                     </h4>
-                    <p className="text-gray-500 font-medium tracking-tight lowercase">
+                    <p className="text-gray-500 text-sm md:text-base font-medium tracking-tight lowercase">
                       {msg.email}
                     </p>
                   </div>
@@ -229,10 +229,10 @@ const ContactMessages = () => {
                   {/* Column 2 & 3: Message Text Area (Spanned for enhanced readability) */}
                   <div className="md:col-span-3 space-y-2">
                     <div>
-                      <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                      <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                         Inquiry Body
                       </span>
-                      <div className="bg-gray-50/80 p-3 border border-gray-100 text-gray-700 leading-relaxed text-xs break-words whitespace-pre-line rounded-sm">
+                      <div className="bg-gray-50/80 p-3 border border-gray-100 text-gray-700 leading-relaxed text-sm md:text-base wrap-break-word whitespace-pre-line rounded-sm">
                         {msg.message || "Empty message body received."}
                       </div>
                     </div>

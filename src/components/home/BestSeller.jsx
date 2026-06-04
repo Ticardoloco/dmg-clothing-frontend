@@ -30,7 +30,7 @@ const BestSeller = () => {
             Best <span className="text-indigo-600 italic font-light">Sellers</span>
           </h2>
           <div className="w-16 h-1 bg-indigo-600 mx-auto mb-6"></div>
-          <p className="text-gray-500 max-w-lg mx-auto text-xs md:text-sm tracking-[0.2em] uppercase leading-relaxed">
+          <p className="text-gray-500 max-w-lg mx-auto text-base md:text-lg uppercase leading-relaxed">
             Our community&apos;s most-loved pieces, handpicked for quality and timeless style.
           </p>
         </div>
@@ -55,7 +55,7 @@ const BestSeller = () => {
                 />
                 
                 {/* Best Seller Badge */}
-                <div className="absolute top-3 left-3 bg-indigo-600 text-white text-[8px] font-bold uppercase tracking-widest px-2 py-1 z-10">
+                <div className="absolute top-3 left-3 bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 z-10">
                   Best Seller
                 </div>
 
@@ -68,11 +68,11 @@ const BestSeller = () => {
                 <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-[0.15em] mb-1">
                   {product.subCategory}
                 </p>
-                <h3 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors duration-300 uppercase tracking-tighter">
+                <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors duration-300 tracking-tighter">
                   {product.name}
                 </h3>
                 <div className="">
-                    <p className="text-gray-900 font-bold text-sm">
+                    <p className="text-gray-900 font-bold text-base md:text-lg">
                         ₦{product.price.toLocaleString()}
                     </p>
                 </div>

@@ -242,7 +242,7 @@ const CustomerOrders = () => {
             Customer{" "}
             <span className="text-indigo-600 italic font-light">Orders</span>
           </h1>
-          <p className="text-[10px] font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
+          <p className="text-sm font-bold text-gray-400 tracking-[0.2em] mt-1.5 uppercase">
             Track customer payments and package delivery status
           </p>
         </div>
@@ -253,7 +253,7 @@ const CustomerOrders = () => {
             placeholder="Search by Name or Order ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-200 px-4 py-3 text-base sm:text-[10px] font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
+            className="border border-gray-200 px-4 py-3 text-base sm:text-sm font-bold tracking-widest uppercase outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-64 transition-all"
           />
         </div>
       </div>
@@ -278,13 +278,13 @@ const CustomerOrders = () => {
                 className="border border-gray-100 bg-white shadow-sm hover:border-gray-200 transition-all overflow-hidden"
               >
                 {/* Order Top Summary Line */}
-                <div className="bg-gray-50/70 px-4 py-3 border-b border-gray-100 flex flex-wrap items-center justify-between gap-4 text-xs">
+                <div className="bg-gray-50/70 px-4 py-3 border-b border-gray-100 flex flex-wrap items-center justify-between gap-4 text-sm">
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                     <span className="font-mono text-gray-400 font-bold uppercase">
                       {order._id}
                     </span>
                     <span className="text-gray-300 hidden sm:inline">|</span>
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-500 font-medium text-sm md:text-base">
                       Placed on:{" "}
                       {order.createdAt
                         ? new Date(order.createdAt).toLocaleDateString()
@@ -306,7 +306,7 @@ const CustomerOrders = () => {
                         onChange={(e) =>
                           handlePaymentStatusChange(order._id, e.target.value)
                         }
-                        className="bg-transparent border-none text-[9px] font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
+                        className="bg-transparent border-none text-xs md:text-sm font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
                       >
                         <option
                           value="pending"
@@ -344,7 +344,7 @@ const CustomerOrders = () => {
                         onChange={(e) =>
                           handleStatusChange(order._id, e.target.value)
                         }
-                        className="bg-transparent border-none text-[9px] font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
+                        className="bg-transparent border-none text-xs md:text-sm font-bold uppercase tracking-widest outline-none cursor-pointer text-current pr-2"
                       >
                         <option
                           value="pending"
@@ -420,31 +420,31 @@ const CustomerOrders = () => {
                 </div>
 
                 {/* Main Order Content Structure */}
-                <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-xs items-start">
+                <div className="p-4 grid grid-cols-1 md:grid-cols-4 gap-6 text-sm items-start">
                   {/* Column 1: Customer Contact Info */}
                   <div className="space-y-1 border-b md:border-b-0 md:border-r border-gray-100 pb-4 md:pb-0 md:pr-2">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Customer Details
                     </span>
-                    <h4 className="font-bold text-gray-900 text-sm">
+                    <h4 className="font-bold text-gray-900 text-sm md:text-base">
                       {address.firstName || ""} {address.lastName || ""}
                     </h4>
-                    <p className="text-gray-500 font-medium">
+                    <p className="text-gray-500 font-medium text-sm md:text-base">
                       {address.email || "No Email Provided"}
                     </p>
 
-                    <p className="text-gray-500 font-medium mt-0.5">
+                    <p className="text-gray-500 font-medium mt-0.5 text-sm md:text-base">
                       {order.user.username || "No Phone Registered"}
                     </p>
 
-                    <p className="text-gray-500 font-medium mt-0.5">
+                    <p className="text-gray-500 font-medium mt-0.5 text-sm md:text-base">
                       {address.phone || "No Phone Registered"}
                     </p>
                   </div>
 
                   {/* Column 2: Shipping Address Area */}
                   <div className="border-b md:border-b-0 md:border-r border-gray-100 pb-4 md:pb-0 md:pr-2">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm  uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Shipping Address
                     </span>
                     <p className="text-gray-700 font-medium leading-relaxed bg-gray-50 p-2.5 border border-gray-100 rounded-sm">
@@ -456,7 +456,7 @@ const CustomerOrders = () => {
 
                   {/* Column 3: Bought Clothing Items */}
                   <div className="space-y-2 border-b md:border-b-0 md:border-r border-gray-100 pb-4 md:pb-0 md:pr-2">
-                    <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-1">
                       Purchased Clothes
                     </span>
                     <div className="space-y-2">
@@ -470,7 +470,7 @@ const CustomerOrders = () => {
                               {item.product?.name || "Product Item"}
                             </div>
                             <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 text-[10px] text-gray-400 mt-1">
-                              <span className="font-bold text-gray-700 bg-white border border-gray-200 px-1 text-[8px]">
+                              <span className="font-bold text-gray-700 bg-white border border-gray-200 px-1 text-[10px]">
                                 {item.size || "Free"}
                               </span>
                               {item.color && (
@@ -490,7 +490,7 @@ const CustomerOrders = () => {
                             <p className="text-[9px] text-gray-400 uppercase tracking-wider">
                               Price
                             </p>
-                            <p className="text-gray-900 font-bold text-xs">
+                            <p className="text-gray-900 font-bold text-sm">
                               ₦{(item.price || 0).toLocaleString()}
                             </p>
                           </div>
@@ -506,16 +506,16 @@ const CustomerOrders = () => {
                   {/* Column 4: Total Price & Payment Method */}
                   <div className="flex flex-col justify-end items-start md:items-end pt-2 md:pt-0 space-y-3">
                     <div className="text-left md:text-right">
-                      <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-0.5">
+                      <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-0.5">
                         Method of Payment
                       </span>
-                      <span className="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 font-bold tracking-wider uppercase font-mono text-[9px] px-2 py-0.5 rounded-none">
+                      <span className="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 font-bold tracking-wider uppercase font-mono text-sm px-2 py-0.5 rounded-none">
                         {order.paymentMethod || order.paymentMode || "Paystack"}
                       </span>
                     </div>
 
                     <div className="text-left md:text-right">
-                      <span className="text-[8px] uppercase tracking-wider text-gray-400 font-bold block mb-0.5">
+                      <span className="text-sm uppercase tracking-wider text-gray-400 font-bold block mb-0.5">
                         Total Payment Received
                       </span>
                       <h3 className="text-lg font-bold text-gray-900 font-mono">

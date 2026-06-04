@@ -14,7 +14,7 @@ const ItemCard = ({id, image, subCategory, name, price, category}) => {
               />
               {/* Badge for Material */}
               <div className='absolute bottom-4 left-4'>
-                <p className='bg-white/90 backdrop-blur-sm text-[9px] font-bold px-3 py-1 uppercase tracking-widest shadow-sm'>
+                <p className='bg-white/90 backdrop-blur-sm text-[10px] font-bold px-3 py-1 uppercase tracking-widest shadow-sm'>
                   {subCategory}
                 </p>
               </div>
@@ -22,12 +22,12 @@ const ItemCard = ({id, image, subCategory, name, price, category}) => {
 
             <div className='flex justify-between items-start'>
                 <div>
-                    <h3 className='text-sm font-bold uppercase tracking-tight text-gray-800 group-hover:text-indigo-600 transition-colors'>
+                    <h3 className='text-base md:text-lg font-bold uppercase tracking-tight text-gray-800 group-hover:text-indigo-600 transition-colors'>
                         {name}
                     </h3>
                     <p className='text-gray-500 text-xs mt-1 uppercase tracking-widest'>{category}</p>
                 </div>
-                <p className='text-sm font-bold text-gray-900'>₦{price.toLocaleString()}</p>
+                <p className='text-base md:text-lg font-bold text-gray-900'>₦{price.toLocaleString()}</p>
             </div>
           </Link>
   )
