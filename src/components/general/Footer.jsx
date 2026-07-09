@@ -79,7 +79,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-3 sm:pt-6 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-6">
           <p className="text-xs text-gray-400 tracking-widest uppercase">
-            © 2026 DMG CLOTHING - ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} DMG CLOTHING - ALL RIGHTS RESERVED.
           </p>
           
           {/* Payment Icons Placeholder */}
