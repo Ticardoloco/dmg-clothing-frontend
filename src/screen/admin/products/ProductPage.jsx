@@ -75,7 +75,8 @@ const ManageProducts = () => {
       try {
         setLoading(true);
         const data = await getProduct();
-        setProducts(data.product);
+        const dataProducts = data.product;
+        setProducts(dataProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {

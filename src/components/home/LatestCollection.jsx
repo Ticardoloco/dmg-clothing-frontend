@@ -6,17 +6,7 @@ import ProductCard from '../general/ProductCard';
 import { getProduct } from '@/lib/api';
 import SkeletonCard from '../skeleton/SkeletonCard';
 
-const LatestCollection = () => {
- const [products, setProducts] = useState([]);
-
- useEffect(()=>{
-  const loadProducts = async ()=>{
-    const data = await getProduct();
-    setProducts(data.product)
-  }
-
-  loadProducts()
- })
+const LatestCollection = ({products}) => {
  
 
   return (

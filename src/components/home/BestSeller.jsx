@@ -5,21 +5,10 @@ import Link from 'next/link';
 import { getProduct } from '../../lib/api';
 import SkeletonCard from '../skeleton/SkeletonCard';
 
-const BestSeller = () => {
-   const [bestSellers, setBestSellers] = useState([]);
+const BestSeller = ({ products }) => {
+  
 
-   useEffect(()=>{
-    const loadProduct = async () =>{
-      const data = await getProduct();
-
-      const dataProducts = data.product;
-      const productFilter = dataProducts.filter((item)=> item.bestSeller === true);
-
-      setBestSellers(productFilter);
-    }
-
-    loadProduct();
-   },[])
+  const bestSellers = products.filter((item)=> item.bestSeller === true);
   return (
     <section className="py-8 sm:py-16 bg-gray-50/50">
       <div className="container mx-auto px-6">

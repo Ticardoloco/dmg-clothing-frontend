@@ -19,11 +19,21 @@ const ShopPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 12;
 
-  const loadProducts = async () => {
-    const data = await getProduct();
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await getProduct();
 
-    setProducts(data.product);
-  };
+        const dataProducts = data.product;
+
+        setProducts(dataProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    loadProducts();
+  }, []);
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -82,7 +92,6 @@ const ShopPage = () => {
   };
 
   useEffect(() => {
-    loadProducts();
     applyFilter();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, subCategory, search, products]);
