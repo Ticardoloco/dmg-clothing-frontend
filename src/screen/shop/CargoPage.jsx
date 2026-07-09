@@ -11,14 +11,22 @@ import SkeletonShop from '@/components/skeleton/SkeletonShop'
 const CargoPage = () => {
   const [sortType, setSortType] = useState('relevant');
   const [cargoProducts, setCargoProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const loadProduct = async () =>{
-        const data = await getProduct();
+    setIsLoading(true);
+        try{
+            const data = await getProduct();
         const cargoData = data.product;
 
         const filterProducts = cargoData.filter((item)=> item.subCategory === "Cargo pants");
 
         setCargoProduct(filterProducts);
+        } catch (error) {
+            console.error("Error fetching Cargo products:", error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const sortProducts = () =>{
@@ -94,7 +102,7 @@ const CargoPage = () => {
       </div>
 
       {/* --- EMPTY STATE --- */}
-      {cargoProducts.length === 0 && (
+      {!isLoading && cargoProducts.length === 0 && (
         <div className='py-32 text-center'>
             <p className='text-gray-400 font-prata italic text-lg'>Exploring new fabrics. Check back soon.</p>
         </div>

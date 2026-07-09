@@ -10,16 +10,23 @@ import SkeletonShop from '@/components/skeleton/SkeletonShop'
 const AgbadaPage = () => {
   const [agbadaProducts, setAgbadaProducts] = useState([]);
   const [sortType, setSortType] = useState('relavent');
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const loadProducts = async () =>{
-    const data = await getProduct();
+    setIsLoading(true);
+    try{
+      const data = await getProduct();
     const AgbadaData = data.product;
 
     const filterAgada = AgbadaData.filter((item)=> item.subCategory === "Agbada");
 
     setAgbadaProducts(filterAgada);
-
+    } catch (error) {
+      console.error("Error fetching Agbada products:", error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   
@@ -98,7 +105,7 @@ const AgbadaPage = () => {
       </div>
 
       {/* --- EMPTY STATE (If no products) --- */}
-      {agbadaProducts?.length === 0 && (
+      {!isLoading && agbadaProducts?.length === 0 && (
         <div className='py-20 text-center'>
             <p className='text-gray-400 font-prata italic'>No Agbada styles found in this collection.</p>
         </div>

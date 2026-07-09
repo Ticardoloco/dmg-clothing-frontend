@@ -7,18 +7,27 @@ import Link from 'next/link'
 import { getProduct } from '@/lib/api'
 import ItemCard from '@/components/general/ItemCard'
 import SkeletonShop from '@/components/skeleton/SkeletonShop'
+import { set } from 'react-hook-form'
 
 const KaftanPage = () => {
   const [kaftanProducts, setKaftanProducts] = useState([]);
   const [sortType, setSortType] = useState('relavent');
+  const [isLoading, setIsLoading] = useState(true);
 
     const loadProduct = async () =>{
-        const data = await getProduct();
+        setIsLoading(true);
+        try{
+          const data = await getProduct();
         const kaftanData = data.product;
 
         const filterProducts = kaftanData.filter((item)=> item.subCategory === "Kaftan");
 
         setKaftanProducts(filterProducts);
+        } catch (error) {
+            console.error("Error fetching Kaftan products:", error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const sortProducts = () =>{
@@ -92,7 +101,7 @@ const KaftanPage = () => {
       </div>
 
       {/* --- NO PRODUCTS FOOTER --- */}
-      {kaftanProducts.length === 0 && (
+      {!isLoading && kaftanProducts.length === 0 && (
         <div className='py-32 text-center'>
             <p className='text-gray-400 font-prata italic text-lg'>Our Kaftan inventory is currently being refreshed.</p>
             <Link href="/shop" className='mt-4 inline-block text-xs font-bold uppercase tracking-widest border-b border-black pb-1'>Back to Shop</Link>

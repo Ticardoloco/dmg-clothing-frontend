@@ -1,6 +1,8 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import CountUp from 'react-countup';
 
 
 const Hero = () => {
@@ -46,11 +48,23 @@ const Hero = () => {
             {/* Trust Badges / Stats */}
             <div className="pt-8 flex justify-center text-center lg:text-start lg:justify-items-normal gap-8 border-t border-gray-100">
               <div>
-                <p className="text-2xl font-bold text-gray-900">50k+</p>
+                <div className="text-2xl font-bold text-gray-900">
+                  
+                  <CountUp
+                  end={50}
+                  duration={5}
+                  />
+                  k+</div>
                 <p className="text-base md:text-lg lg:text-xl text-gray-500">Happy Customers</p>
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">100+</p>
+                <div className="text-2xl font-bold text-gray-900">
+                  <CountUp
+                  end={100}
+                  duration={5}
+                  />
+                  +
+                </div>
                 <p className="text-base md:text-lg lg:text-xl text-gray-500">Premium Styles</p>
               </div>
             </div>

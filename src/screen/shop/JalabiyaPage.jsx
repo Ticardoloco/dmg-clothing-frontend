@@ -10,14 +10,22 @@ import SkeletonShop from '@/components/skeleton/SkeletonShop'
 const JalabiyaPage = () => {
   const [jalabiyaProducts, setJalabiyaProducts] = useState([]);
   const [sortType, setSortType] = useState('relavent');
+  const [isLoading, setIsLoading] = useState(true);
 
    const loadProducts = async () =>{
-      const data = await getProduct();
+    setIsLoading(true);
+      try{
+         const data = await getProduct();
       const jalabiyaData = data.product;
   
       const filterJalabiya = jalabiyaData.filter((item)=> item.subCategory === "Jalabiya");
   
       setJalabiyaProducts(filterJalabiya);
+      } catch (error) {
+        console.error("Error fetching Jalabiya products:", error);
+      } finally {
+        setIsLoading(false);
+      }
   
     }
   
@@ -99,7 +107,7 @@ const JalabiyaPage = () => {
       </div>
 
       {/* --- EMPTY STATE --- */}
-      {jalabiyaProducts.length === 0 && (
+      {!isLoading && jalabiyaProducts.length === 0 && (
         <div className='py-32 text-center'>
             <p className='text-gray-400 font-prata italic text-lg'>Exploring new fabrics. Check back soon.</p>
         </div>

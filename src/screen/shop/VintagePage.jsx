@@ -11,14 +11,21 @@ import SkeletonShop from '@/components/skeleton/SkeletonShop'
 const VintagePage = () => {
   const [vintageProducts, setVintageProducts] = useState([]);
   const [sortType, setSortType] = useState('relevant');
-
+  const [isLoading, setIsLoading] = useState(true);
     const loadProduct = async () =>{
-            const data = await getProduct();
+            setIsLoading(true);
+            try{
+                const data = await getProduct();
             const vintageData = data?.product || [];
     
             const filterProducts = vintageData.filter((item)=> item.subCategory === "Vintage");
     
             setVintageProducts(filterProducts);
+            } catch (error) {
+                console.error("Error fetching Vintage products:", error);
+            } finally {
+                setIsLoading(false);
+            }
         };
     
         const sortProducts = () =>{
@@ -95,7 +102,7 @@ const VintagePage = () => {
       </div>
 
        {/* --- EMPTY STATE --- */}
-      {vintageProducts.length === 0 && (
+      {!isLoading && vintageProducts.length === 0 && (
         <div className='py-32 text-center'>
             <p className='text-gray-400 font-prata italic text-lg'>Exploring new fabrics. Check back soon.</p>
         </div>

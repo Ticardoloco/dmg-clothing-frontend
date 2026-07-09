@@ -38,11 +38,6 @@ const logOut = useAuthStore((state) => state.logOut);
     clearCart();
   };
 
-  // useEffect(() => {
-  //   setHydrated(true);
-  // }, []);
-
-  //  if (!hydrated) return null;
 
   return (
     <div className="fixed top-0 left-0 w-full z-40 bg-white/90 backdrop-blur-md px-6 py-5 flex items-center justify-between font-medium border-b border-gray-100">

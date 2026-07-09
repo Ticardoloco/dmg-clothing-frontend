@@ -10,14 +10,22 @@ import SkeletonShop from '@/components/skeleton/SkeletonShop'
 const JacketPage = () => {
   const [sortType, setSortType] = useState('relevant');
   const [jacketProducts, setJackProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const loadProduct = async () =>{
-          const data = await getProduct();
-          const jacketData = data.product;
-  
-          const filterProducts = jacketData.filter((item)=> item.subCategory === "Jacket");
-  
-          setJackProducts(filterProducts);
+    setIsLoading(true);
+          try{
+            const data = await getProduct();
+            const jacketData = data.product;
+    
+            const filterProducts = jacketData.filter((item)=> item.subCategory === "Jacket");
+    
+            setJackProducts(filterProducts);
+          } catch (error) {
+            console.error("Error fetching Jacket products:", error);
+          } finally {
+            setIsLoading(false);
+          }
       };
   
       const sortProducts = () =>{
@@ -92,7 +100,7 @@ const JacketPage = () => {
       </div>
 
       {/* --- EMPTY STATE --- */}
-      {jacketProducts.length === 0 && (
+      {!isLoading && jacketProducts.length === 0 && (
         <div className='py-32 text-center'>
             <p className='text-gray-400 font-prata italic text-lg'>Tailoring in progress. New outer layers arriving soon.</p>
         </div>
