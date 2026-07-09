@@ -123,9 +123,6 @@ const AdminDashboard = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="border border-gray-200 px-4 py-3 text-base md:text-lg sm:text-[10px] font-bold tracking-widest  outline-none focus:border-indigo-600 text-gray-900 bg-white h-11 w-full lg:w-56 rounded-none transition-all"
           />
-          <button className="bg-indigo-600 text-white px-6 py-3 text-sm md:text-base font-bold uppercase tracking-widest hover:bg-black transition-all h-11 active:scale-[0.99]">
-            Add New
-          </button>
         </div>
       </div>
 
