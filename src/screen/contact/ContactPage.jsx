@@ -44,9 +44,11 @@ const ContactPage = () => {
 
       if (!response.ok) {
         toast.error(data.message || "Failed to send message");
-      }
+      }else{
 
       toast.success("Message sent successfully");
+      }
+
 
        // clear form after successful submission
       setFormData({
